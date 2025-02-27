@@ -1,11 +1,13 @@
-import SideBar from "./components/SideBar"
-import Table from "./components/Table"
+import SideBar from './components/SideBar'
+import Table from './components/Table'
 
 const LeaderBoard = () => {
   return (
-    <div>
-      <SideBar/>
-      <Table/>
+    <div className='flex flex-row'>
+      <SideBar />
+      <div className='w-[80%]'>
+        <Table />
+      </div>
     </div>
   )
 }

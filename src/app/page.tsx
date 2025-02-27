@@ -7,12 +7,8 @@ import Login from "@/components/Login";
 
 export default function Home() {
   return (
-    <div className=" overflow-hidden">
-           <Login/>
-     <HeroSection/>
-     <DecleanupDos/>
-     <HowItWorks/>
-     <Faqs/>
+    <div>
+      <Login/>
     </div>
   );
 }
