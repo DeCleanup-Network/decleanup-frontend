@@ -1,7 +1,6 @@
-import { useState } from 'react';
+import React, { useEffect } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
-import { X } from 'lucide-react';
 
 type DecleanupShareModalProps = {
   isOpen: boolean;
@@ -9,18 +8,22 @@ type DecleanupShareModalProps = {
 };
 
 const DecleanupShareModal: React.FC<DecleanupShareModalProps> = ({ isOpen, onClose }) => {
-  const [isSharing, setIsSharing] = useState(false);
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isOpen]);
 
-  const shareOnX = async () => {
-    setIsSharing(true);
-    const text = encodeURIComponent(
-      "🎉 I just completed all levels of Decleanup Journey! Stay tuned for new updates! 🌊🌱 #Decleanup #PixelArtGame"
-    );
-    const url = encodeURIComponent('https://decleanupgame.com');
+  const handleShare = () => {
+    const text = encodeURIComponent("🎉 I've just received the first level of Decleanup Impact Product! Come join me and earn more DCU points! 🌱 #Decleanup #DCUPoints #ImpactProduct");
+    const url = encodeURIComponent("https://decleanupgame.com");
     const shareUrl = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
-
     window.open(shareUrl, '_blank');
-    setIsSharing(false);
   };
 
   if (!isOpen) return null;
@@ -30,38 +33,49 @@ const DecleanupShareModal: React.FC<DecleanupShareModalProps> = ({ isOpen, onClo
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.8 }}
-      className="fixed inset-0 flex items-center justify-center bg-green-600 bg-opacity-90 z-50"
+      className="fixed inset-0 flex items-end justify-center bg-black bg-opacity-75 z-50"
     >
-      <div className="border-4 border-yellow-400 p-4 bg-green-500 rounded-2xl relative w-full max-w-3xl">
-        <button
-          onClick={onClose}
-          className="absolute top-2 right-2 bg-black text-yellow-400 rounded-lg p-1 w-8 h-8 flex items-center justify-center"
-        >
-          <X size={24} />
-        </button>
-        <div className="flex items-center">
-          <div className="text-left font-bold text-lg mr-8 mt-20">
-            <p className="text-yellow-400">CONGRATULATIONS! YOU'VE</p>
-            <p className="text-yellow-400">SUCCESSFULLY COMPLETED ALL</p>
-            <p className="text-yellow-400">LEVELS OF DECLEANUP JOURNEY <span className="text-black">AT</span></p>
-            <p className="text-black">THIS PHASE! STAY UPDATED FOR</p>
-            <p className="text-black">NEW LEVELS UPDATES.</p>
-          </div>
+      <button
+        onClick={onClose}
+        className="absolute top-0 right-0 m-4 text-white text-7xl m-7"
+      >
+        &times;
+      </button>
+      <div className="relative bg-[#FAFF00] text-black w-[95%] rounded-b-2xl p-6 h-[60%] mb-[2%]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
           <motion.div
-            className="border-4 border-yellow-400 rounded-lg bg-blue-300 m-10"
-            animate={{ rotate: [0, 3, -3, 0] }}
+            className="w-full max-w-[150px] mx-auto md:max-w-none"
+            animate={{ rotate: [0, 2, -2, 0] }}
             transition={{ repeat: Infinity, duration: 0.2, ease: 'easeInOut' }}
           >
-            <img src="/decleanup.webp" alt="Decleanup Journey" className="w-50 h-44 object-cover" />
+            <Image
+              src="/decleanup_anim.jpeg"
+              alt="Decleanup Impact Product"
+              width={150}
+              height={110}
+              className="w-full h-auto rounded-lg"
+            />
           </motion.div>
+          <div className="md:col-span-2 text-left">
+            <p className="text-base md:text-lg lg:text-xl xl:text-2xl font-semibold leading-tight">
+              CONGRATULATIONS, YOU'VE JUST RECEIVED THE FIRST LEVEL OF DECLEANUP 
+            </p>
+            <p className="text-base md:text-lg lg:text-xl xl:text-2xl font-semibold leading-tight">
+             IMPACT PRODUCT. COME BACK FOR MORE!
+            </p>
+            <p className="text-base md:text-lg lg:text-xl xl:text-2xl mt-10 font-semibold leading-tight">
+              SHARE YOUR REFERRAL WITH FRIENDS AND EARN MORE DCU POINTS.
+            </p>
+          </div>
         </div>
-        <Button
-          onClick={shareOnX}
-          disabled={isSharing}
-          className="bg-black text-yellow-400 px-8 py-4 rounded-0xl text-lg mt-8 w-full"
-        >
-          {isSharing ? 'SHARING...' : 'SHARE ON X'}
-        </Button>
+        <div className="absolute bottom-4 right-4">
+          <button
+            onClick={handleShare}
+            className="bg-black text-[#FAFF00] px-6 py-3 text-lg w-60 transition-transform transform hover:scale-105"
+          >
+            SHARE ON X
+          </button>
+        </div>
       </div>
     </motion.div>
   );
