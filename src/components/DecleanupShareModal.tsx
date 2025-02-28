@@ -37,7 +37,7 @@ const DecleanupShareModal: React.FC<DecleanupShareModalProps> = ({ isOpen, onClo
     >
       <button
         onClick={onClose}
-        className="absolute top-0 right-0 m-4 text-white text-7xl m-7"
+        className="absolute top-0 right-0 m-7 text-white text-7xl"
       >
         &times;
       </button>
