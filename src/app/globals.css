@@ -8,9 +8,7 @@
   html {
     @apply text-black;
   }
-  body {
-    @apply text-black;
-  }
+  
 }
 
 @keyframes scroll {
