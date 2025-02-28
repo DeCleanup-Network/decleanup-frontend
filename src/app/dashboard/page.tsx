@@ -2,7 +2,7 @@ import IsolationMode from "@/./public/Isolation_Mode.png";
 import Image from "next/image";
 export default function Page(){
     return(
-        <div className="bg-[#58B12F] my-[1px] p-4">
+        <div className="bg-[#58B12F] my-[1px] p-4 font-bebas">
             <div className="flex justify-between items-start px-2">
                 <div className="flex flex-col w-[335px]">
                     <StreakBox />
@@ -17,7 +17,7 @@ export default function Page(){
                         </div>
                         <div className="border-b  border-b-black flex justify-between items-center">
                             <p className="text-[24px]">STREAK</p>
-                            <p className="text-[24px] text-[#FAFF00]">1o</p>
+                            <p className="text-[24px] text-[#FAFF00]">10</p>
                         </div>
                         <div className="border-b  border-b-black flex justify-between items-center">
                             <p className="text-[40px]">TOTAL $DCU</p>
