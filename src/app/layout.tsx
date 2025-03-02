@@ -27,7 +27,7 @@ export default function RootLayout({
     >
       <body>
         <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
-          <div className="m-5">
+          <div className="">
           <Header />
           {children}
 
