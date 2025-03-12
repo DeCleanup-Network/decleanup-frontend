@@ -35,7 +35,7 @@ export default function Page(){
                     </div>
                 </div>
                 <div className="w-[454px]">
-                    <div className="w-full border-4 border-black w-full h-[402px] py-2 px-12 bg-[#51A12C] h-[402px]">
+                    <div className="w-full border-4 border-black py-2 px-12 bg-[#51A12C] h-[402px]">
                         <div className="border-4 border-[#FAFF00] flex flex-col">
                             <div className="bg-black">
                                 <div className="flex space-x-1 items-center px-1">
@@ -109,6 +109,6 @@ interface LongButtonProps{
 }   
 function LongButton({text, isNotBlack}: LongButtonProps){
     return(
-        <button className={isNotBlack ? `block bg-[#1E8428] opacity-50 w-full text-center text-black text-center text-[40px] h-[60px]` :  `block bg-black w-full text-center text-[#FAFF00] text-center text-[40px] h-[60px]`}>{text}</button>
+        <button className={isNotBlack ? `block bg-[#1E8428] opacity-50 w-full  text-black text-center text-[40px] h-[60px]` :  `block bg-black w-full text-center text-[#FAFF00] text-center text-[40px] h-[60px]`}>{text}</button>
     )
 }
