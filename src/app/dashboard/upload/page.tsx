@@ -3,7 +3,7 @@ import { useState, ChangeEvent, useEffect } from 'react';
 import Image from 'next/image';
 import questionMark from '@/public/question-mark.svg';
 import { Button } from '@/components/ui/button';
-import Progress from '@/components/ui/Progress';
+import Progress from '@/components/ui/Progress'
 import DualUpload from './components/DualUpload';
 import InstructionsModal from './components/InstructionsModal';
 

@@ -8,7 +8,7 @@ export default function Page(){
                     <StreakBox />
                     <div className="flex flex-col space-y-1 mt-4">
                         <div className="border-b border-b-black flex justify-between items-center">
-                            <p className="text-[24px]">CLEANUPS DONE</p>
+                            <p className='text-[24px]'>CLEANUPS DONE</p>
                             <p className="text-[24px] text-[#FAFF00]">10</p>
                         </div>
                         <div className="border-b border-b-black flex justify-between items-center">

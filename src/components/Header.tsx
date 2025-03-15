@@ -46,7 +46,7 @@ const Header: React.FC = () => {
             </a>
           </div>
         )}
-      <p className="text-[36.82px] hidden md:flex">CLEANUP, SNAP, EARN</p>
+      <p className="text-[36.82px] hidden md:flex">CLEANUP. SNAP, EARN</p>
     </div>
   )
 }
