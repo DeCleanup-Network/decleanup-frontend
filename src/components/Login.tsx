@@ -2,20 +2,14 @@
 
 const Login: React.FC = () => {
   return (
-    <div className='flex flex-col min-h-screen' style={{ backgroundColor: '#58b12f' }}>
+    <div className='flex flex-col h-screen md:h-full bg-[#58b12f]' >
     <hr className='my-4 w-full border-t-2 border-black' />
   
     {/* Main Content */}
     <div className='flex flex-col items-center px-4'>
       {/* Heading */}
       <h2
-        className='mb-4 text-center text-4xl font-bold sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl'
-        style={{
-          whiteSpace: 'normal',
-          maxWidth: '100%',
-          wordBreak: 'break-word',
-          lineHeight: '1.2',
-        }}
+        className='mb-4 text-center text-4xl font-bold sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl max-w-full leading-3 whitespace-normal p-2'
       >
         DECLEANUP REWARDS
       </h2>
@@ -23,7 +17,7 @@ const Login: React.FC = () => {
       <hr className='my-4 w-full border-t-2 border-black' />
   
       {/* Subheading and Description */}
-      <div className='flex flex-col items-center text-center'>
+      <div className='flex flex-col items-center text-center py-5'>
         <p className='mb-4 bg-[#FAFF00] p-2 text-lg font-bold sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl'>
           FIRST DAPP TO SELF-TOKENIZE ENVIRONMENTAL CLEANUP EFFORTS
         </p>
