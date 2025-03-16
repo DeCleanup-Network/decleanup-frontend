@@ -79,7 +79,7 @@ const Page = () => {
   return (
     <section
       onSubmit={handleUpload}
-      className="font-nunito flex min-h-[90vh] items-center justify-center bg-[#58B12F] px-5 py-[80px] relative"
+      className="font-nunito flex bg items-center justify-center bg-[#58B12F] px-5 py-16 relative border-y-2 border-black"
     >
       <form className="flex w-full max-w-[926px] flex-col items-center justify-center gap-6">
         {/* Submission Requirements Section */}

@@ -9,7 +9,7 @@ interface HeaderProps {
 const Header: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false)
   return (
-    <div className='bg-[#58B12F] px-2 flex justify-between items-center rounded-t-xl font-bebas'>
+    <div className='bg-[#58B12F] px-5 flex justify-between items-center rounded-t-xl font-bebas'>
       <p className="bg-[#FAFF00] text-2xl">DECLEANUP NETWORK</p>
 
       <div className='mr-4 flex items-center justify-end md:hidden'>
