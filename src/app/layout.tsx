@@ -24,7 +24,7 @@ export default function RootLayout({
     <html lang='en'>
       <body>
         <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
-          <div className="">
+          <div className=" border-black border-8 rounded-xl">
           <Header />
           {children}
 

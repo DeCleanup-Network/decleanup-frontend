@@ -12,24 +12,3 @@
   
 }
 
-@keyframes scroll {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%); /* Move by 50% of the container's width */
-    }
-  }
-  
-  /* Apply the animation to the scrolling container */
-  .scrolling-container {
-    display: flex;
-    white-space: nowrap; /* Prevent items from wrapping */
-    animation: scroll 20s linear infinite; /* Adjust duration as needed */
-  }
-  
-  /* Ensure the container is wider than its parent to create the scrolling effect */
-  .scrolling-container > * {
-    flex: 0 0 auto;
-    margin-right: 2rem; /* Add spacing between items */
-  }

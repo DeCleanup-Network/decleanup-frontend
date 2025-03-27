@@ -1,11 +1,41 @@
 import IsolationMode from '@/./public/Isolation_Mode.png'
 import Image from 'next/image'
+
+interface LongButtonProps {
+  text: string
+  isNotBlack?: boolean
+}
+
 export default function Page() {
   return (
-    <div className='my-[1px] bg-[#58B12F] p-4 font-bebas'>
+    <div className='my-[1px] bg-[#58B12F] p-4 font-bebas md:h-[745px]'>
       <div className='flex items-start justify-between px-2'>
-        <div className='flex w-[335px] flex-col'>
-          <StreakBox />
+        <div className='flex w-[535px] flex-col'>
+          {/* 24 WEEKS STREAK*/}
+          <div className='flex h-[61px] w-full bg-black p-1'>
+            <div className='flex items-center justify-center bg-black p-5'>
+              <svg
+                width='33'
+                height='36'
+                viewBox='0 0 33 36'
+                fill='none'
+                xmlns='http://www.w3.org/2000/svg'
+              >
+                <path
+                  d='M16.4445 21.6724L12.0662 25.8245C10.9151 26.9371 10.2778 28.3873 10.2778 29.9369C10.2778 33.1554 13.0528 35.7778 16.4445 35.7778C19.8361 35.7778 22.6111 33.1554 22.6111 29.9369C22.6111 28.3873 21.9739 26.9172 20.8228 25.8245L16.4445 21.6724Z'
+                  fill='#FAFF00'
+                />
+                <path
+                  d='M24.6666 7.96428L23.7621 9.05696C21.3366 11.9774 16.4444 10.3284 16.4444 6.57361V0.0175781C16.4444 0.0175781 0 7.96428 0 21.871C0 27.6721 3.20665 32.7381 7.99608 35.4996C6.84497 33.9301 6.16664 32.0031 6.16664 29.9369C6.16664 27.3145 7.23553 24.851 9.1883 22.9836L16.4444 16.1097L23.7005 23.0034C25.6532 24.851 26.7221 27.3145 26.7221 29.9568C26.7221 31.9832 26.0849 33.8507 24.9749 35.4202C28.8599 33.1355 31.7377 29.3409 32.601 24.8908C33.9577 17.8381 30.4016 11.1827 24.6666 7.96428Z'
+                  fill='#FAFF00'
+                />
+              </svg>
+            </div>
+            <div className='flex w-full items-center justify-start bg-[#58B12F] px-2'>
+              <p className='text-[40px]'>24 WEEKS STREAK</p>
+            </div>
+          </div>
+
           <div className='mt-4 flex flex-col space-y-1'>
             <div className='flex items-center justify-between border-b border-b-black'>
               <p className='text-[24px]'>CLEANUPS DONE</p>
@@ -28,14 +58,15 @@ export default function Page() {
           <div className='mt-24'>
             <LongButton text='LEADERBOARD' />
           </div>
-          {/* <div className='mt-24'>
-            <p className='text-right underline'>EARN MORE $DCU TOGETHER!</p>
-            <LongButton text='LEADERBOARD' />
-          </div> */}
+
+          <div className='mt-32'>
+            <p className='left underline'>earn more $DCU together</p>
+            <LongButton text='Invite friends' />
+          </div>
         </div>
-        <div className='w-[454px]'>
+        <div className='w-[654px]'>
           <div className='h-[402px] w-full border-4 border-black bg-[#51A12C] px-12 py-2'>
-            <div className='flex flex-col border-4 border-[#FAFF00]'>
+            <div className='flex flex-col border-4 border-[#FAFF00] my-2'>
               <div className='bg-black'>
                 <div className='flex items-center space-x-1 px-1'>
                   <p className='text-[13.56px] text-[#58B12F]'>LVL</p>
@@ -67,9 +98,11 @@ export default function Page() {
               <p className='text-[#FAFF00]'>2</p>
             </div>
           </div>
-          <div className='mt-2 flex w-full flex-col space-y-2'>
+          <div className='mt-4 flex h-full w-full flex-col space-y-2'>
             <LongButton text='APPLY WITH CLEANUP' />
-            <LongButton text='CLAIM NEXT LEVEL' isNotBlack />
+            <div className='mt-6'>
+              <LongButton text='CLAIM NEXT LEVEL' isNotBlack />
+            </div>
           </div>
         </div>
         <div className='flex w-[337px] flex-col space-y-2'>
@@ -83,38 +116,6 @@ export default function Page() {
   )
 }
 
-function StreakBox() {
-  return (
-    <div className='flex h-[61px] w-full bg-black p-1'>
-      <div className='flex items-center justify-center bg-black p-5'>
-        <svg
-          width='33'
-          height='36'
-          viewBox='0 0 33 36'
-          fill='none'
-          xmlns='http://www.w3.org/2000/svg'
-        >
-          <path
-            d='M16.4445 21.6724L12.0662 25.8245C10.9151 26.9371 10.2778 28.3873 10.2778 29.9369C10.2778 33.1554 13.0528 35.7778 16.4445 35.7778C19.8361 35.7778 22.6111 33.1554 22.6111 29.9369C22.6111 28.3873 21.9739 26.9172 20.8228 25.8245L16.4445 21.6724Z'
-            fill='#FAFF00'
-          />
-          <path
-            d='M24.6666 7.96428L23.7621 9.05696C21.3366 11.9774 16.4444 10.3284 16.4444 6.57361V0.0175781C16.4444 0.0175781 0 7.96428 0 21.871C0 27.6721 3.20665 32.7381 7.99608 35.4996C6.84497 33.9301 6.16664 32.0031 6.16664 29.9369C6.16664 27.3145 7.23553 24.851 9.1883 22.9836L16.4444 16.1097L23.7005 23.0034C25.6532 24.851 26.7221 27.3145 26.7221 29.9568C26.7221 31.9832 26.0849 33.8507 24.9749 35.4202C28.8599 33.1355 31.7377 29.3409 32.601 24.8908C33.9577 17.8381 30.4016 11.1827 24.6666 7.96428Z'
-            fill='#FAFF00'
-          />
-        </svg>
-      </div>
-      <div className='flex w-full items-center justify-start bg-[#58B12F] px-2'>
-        <p className='text-[40px]'>24 WEEKS STREAK</p>
-      </div>
-    </div>
-  )
-}
-
-interface LongButtonProps {
-  text: string
-  isNotBlack?: boolean
-}
 function LongButton({ text, isNotBlack }: LongButtonProps) {
   return (
     <button
