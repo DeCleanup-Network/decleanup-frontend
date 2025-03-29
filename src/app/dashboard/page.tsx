@@ -8,7 +8,7 @@ interface LongButtonProps {
 
 export default function Page() {
   return (
-    <div className='my-[1px] bg-[#58B12F] p-4 font-bebas md:h-[745px]'>
+    <div className=' bg-[#58B12F] p-4 font-bebas md:h-[745px]'>
       <div className='flex items-start justify-between px-2'>
         <div className='flex w-[535px] flex-col'>
           {/* 24 WEEKS STREAK*/}

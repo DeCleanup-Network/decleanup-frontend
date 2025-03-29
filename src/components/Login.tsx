@@ -3,12 +3,12 @@
 const Login: React.FC = () => {
   return (
     <div className='flex h-[745px] flex-col bg-[#58b12f]'>
-      <hr className='my-4 w-full border-t-2 border-black' />
+
 
       {/* Main Content */}
       <div className='flex flex-col items-center '>
         {/* Heading */}
-        <h2 className='mb-4 max-w-full whitespace-normal p-2 text-center text-4xl font-bold md:font-extrabold font-nunito leading-3 sm:text-5xl md:text-6xl lg:text-8xl xl:text-9xl'>
+        <h2 className='mb-4 mt-4 max-w-full whitespace-normal p-2 text-center text-4xl font-bold md:font-extrabold font-nunito leading-3 sm:text-5xl md:text-6xl lg:text-8xl xl:text-9xl'>
           DECLEANUP REWARDS
         </h2>
 
@@ -39,8 +39,6 @@ const Login: React.FC = () => {
             CONNECT WALLET
           </button>
         </div>
-
-     
       </div>
     </div>
   )

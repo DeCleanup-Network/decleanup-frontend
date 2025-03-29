@@ -1,9 +1,12 @@
 import Login from "@/components/Login";
 
-export default function Home() {
+
+const page = () => {
   return (
-    <div className="b">
-      <Login/>
+    <div>
+       <Login/>
     </div>
-  );
+  )
 }
+
+export default page
