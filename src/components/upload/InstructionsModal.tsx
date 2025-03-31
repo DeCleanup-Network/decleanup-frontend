@@ -1,5 +1,6 @@
 import Image from "next/image";
-import closeIcon from "@/public/close-bold.svg";
+// import closeIcon from "@/public/close-bold.svg";
+import closeIcon from "@/public/closeModal.png"
 
 type InstructionsModalProps = {
   closeModal: () => void;

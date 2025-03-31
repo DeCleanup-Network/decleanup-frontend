@@ -1,4 +1,8 @@
+"use client"
 import IsolationMode from '@/./public/Isolation_Mode.png'
+// import UploadModal from '@/components/UploadModal'
+import ImageUploadModal from '@/components/UploadModal'
+import { useState } from 'react'
 import Image from 'next/image'
 
 interface LongButtonProps {
@@ -7,6 +11,13 @@ interface LongButtonProps {
 }
 
 export default function Page() {
+
+      const [isModalOpen,setIsModalOpen]=useState(false)
+      const [uploadedImages, setUploadedImages] = useState<File[]>([]);
+      const handleSubmit = (images: File[]) => {
+        setUploadedImages(images);
+        console.log('Uploaded images:', images);
+      };
   return (
     <div className=' bg-[#58B12F] p-4 font-bebas md:h-[745px]'>
       <div className='flex items-start justify-between px-2'>
@@ -99,7 +110,9 @@ export default function Page() {
             </div>
           </div>
           <div className='mt-4 flex h-full w-full flex-col space-y-2'>
+            <div onClick={()=>  setIsModalOpen(true)}>
             <LongButton text='APPLY WITH CLEANUP' />
+            </div>
             <div className='mt-6'>
               <LongButton text='CLAIM NEXT LEVEL' isNotBlack />
             </div>
@@ -112,6 +125,12 @@ export default function Page() {
           <LongButton text='CLAIM STAKE' isNotBlack />
         </div>
       </div>
+
+      <ImageUploadModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onSubmit={handleSubmit}
+      />
     </div>
   )
 }
