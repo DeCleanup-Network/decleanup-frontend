@@ -8,7 +8,7 @@ const Header: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false)
   return (
     <div className='bg-[#58B12F] p-4 flex justify-between items-center border-b-black border  font-bebas'>
-      <p className="bg-[#FAFF00] text-2xl">DECLEANUP NETWORK</p>
+      <p className="bg-[#FAFF00] text-2xl p-2">DECLEANUP NETWORK</p>
 
       <div className='mr-4 flex items-center justify-end md:hidden'>
           <button
