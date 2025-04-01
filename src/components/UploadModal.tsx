@@ -56,7 +56,7 @@ const ImageUploadModal: React.FC<ImageUploadModalProps> = ({
 
   return (
     <div className='fixed inset-0 z-50 flex items-end bg-black bg-opacity-80'>
-      <div className='relative h-[38rem] w-full overflow-hidden rounded-lg bg-gray-900'>
+      <div className='relative  w-full overflow-auto rounded-lg bg-gray-900 md:h-[38rem]'>
         {/* Close button */}
         <button
           onClick={handleClose}
@@ -71,81 +71,75 @@ const ImageUploadModal: React.FC<ImageUploadModalProps> = ({
         </div>
 
         {/* Content */}
-        <div className='h-full p-4'>
+        <div className='h-full p-2 md:p-4'>
           {/* Steps section */}
-          <div className='h-full rounded bg-[#FAFF00] p-4'>
-            <div className=''>
-              {/* Step 1 */}
-
-              {/* Step 2 */}
-              {/* <div className='col-span-1'>
-                <div className='mb-1 text-2xl font-bold'>
-                  2. CAPTURE THE TRANSFORMATION PHASE OR NEXT STAGE OF WORKS
-                  (COMPLETED OR IN PROGRESS)
-                </div>
-              </div> */}
-
-              {/* <div className='col-span-1'>
-                <div className='mb-1 text-xs font-bold'>
-                  3. UPLOAD BEFORE AND AFTER COLLAGE PHOTOS WITH NOTES
-                </div>
-              </div> */}
-
-              <div className='w-[70%] h-full  flex flex-row justify-between'>
-                <div className='mb-8 flex flex-col justify-between w-[48%]'>
-                  <div className='mb-1 text-4xl font-bold'>
+          <div className='h-full rounded bg-[#FAFF00] p-2 md:p-4'>
+            <div className='flex h-full flex-col p-2 md:flex-row md:justify-between md:p-5'>
+              {/* image uploader - will stack vertically on mobile */}
+              <div className='mb-4 w-full md:mb-0 md:flex md:w-[70%] md:flex-row md:justify-between'>
+                <div className='mb-4 flex flex-col justify-between md:mb-8 md:w-[48%]'>
+                  <div className='mb-1 font-bebas text-2xl font-normal md:text-3xl lg:text-4xl'>
                     1. TAKE A PHOTO OF THE AREA BEFORE YOU START. STATE THE
                     PROJECT NAME
                   </div>
                   <div
-                    className='flex h-[304px] cursor-pointer items-center justify-center rounded bg-green-600'
+                    className='flex h-[150px] cursor-pointer items-center justify-center rounded bg-green-600 md:h-[200px] lg:h-[304px]'
                     onClick={triggerFileInput}
                     onDrop={handleDrop}
                     onDragOver={handleDragOver}
                   >
-                    <Upload size={36} className='text-black' />
+                    <Upload
+                      size={80}
+                      className='md:size-100 lg:size-150 text-black'
+                    />
                   </div>
                 </div>
 
-                <div className='mb-8 flex flex-col justify-between w-[48%]'>
-                  <div className='mb-1 text-4xl font-bold'>
+                <div className='mb-4 flex flex-col justify-between md:mb-8 md:w-[48%]'>
+                  <div className='mb-1 font-bebas text-2xl font-normal md:text-3xl lg:text-4xl'>
                     2. Capture the transformed space! Upload your after photo to
                     complete your submission and earn rewards.
                   </div>
                   <div
-                    className='flex h-[304px] cursor-pointer items-center justify-center rounded bg-green-600'
+                    className='flex h-[150px] cursor-pointer items-center justify-center rounded bg-green-600 md:h-[200px] lg:h-[304px]'
                     onClick={triggerFileInput}
                     onDrop={handleDrop}
                     onDragOver={handleDragOver}
                   >
-                    <Upload size={36} className='text-black' />
+                    <Upload
+                      size={80}
+                      className='md:size-100 lg:size-150 text-black'
+                    />
                   </div>
                 </div>
               </div>
 
-              <div>
-                
-              </div>
-
-              {/* <div className='col-span-1 flex flex-col'>
-                <div className='mb-2 text-xs font-bold'>
-                  ENSURE YOU HAVE DETAILS FOR REVIEW AND MAXIMUM SIZE PER IMAGE:
-                  10 MB
-                </div>
-                <div className='mt-auto'>
-                  <div className='mb-2 text-xs font-bold'>
-                    4. REVIEW AND ALLOW US TO STORE YOUR PICTURES FOR DATA
-                    PLATFORM OR STEMMENT
+              <div className='flex w-full flex-col justify-between md:w-[28%] lg:w-[20%]'>
+                <ol className='border-b-2 border-black pb-4'>
+                  <li className='mt-2 font-bebas text-xl font-normal text-black md:text-2xl lg:text-3xl'>
+                    upload before and after cleanup photos with geotag
+                  </li>
+                  <li className='mt-3 text-lg font-normal text-black md:text-xl lg:text-3xl'>
+                    supported formats JPEG, JPG, HEIC
+                  </li>
+                  <li className='mt-3 text-lg font-normal text-black md:text-xl lg:text-3xl'>
+                    maximum size per image 10 MB
+                  </li>
+                </ol>
+                <div className='mt-4 md:mt-0'>
+                  <div className='flex flex-row items-baseline'>
+                    <input type='checkbox' className='h-4 w-4' />
+                    <p className='ml-2 font-bebas text-lg font-normal md:text-xl lg:text-2xl'>
+                      Agree if you allow us to post your pictures on social
+                      platforms (X, Telegram)
+                    </p>
                   </div>
-                  <button
-                    onClick={handleSubmit}
-                    className='flex w-full items-center justify-center rounded bg-gray-900 px-4 py-1 text-white'
-                    disabled={selectedImages.length === 0}
-                  >
-                    <span>SEND</span>
+
+                  <button className='my-4 h-10 w-full bg-black text-2xl text-[#FAFF00] md:h-12 md:text-3xl lg:h-14 lg:text-4xl'>
+                    send
                   </button>
                 </div>
-              </div> */}
+              </div>
             </div>
           </div>
 
@@ -163,7 +157,7 @@ const ImageUploadModal: React.FC<ImageUploadModalProps> = ({
           {selectedImages.length > 0 && (
             <div className='mt-4'>
               <h3 className='mb-2 font-bold text-white'>Selected Images:</h3>
-              <div className='grid grid-cols-3 gap-2'>
+              <div className='grid grid-cols-2 gap-2 md:grid-cols-3'>
                 {selectedImages.map((img, index) => (
                   <div key={index} className='relative'>
                     <img
