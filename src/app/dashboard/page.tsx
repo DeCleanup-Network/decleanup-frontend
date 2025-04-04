@@ -1,7 +1,9 @@
-"use client"
+'use client'
 import IsolationMode from '@/./public/Isolation_Mode.png'
-// import UploadModal from '@/components/UploadModal'
-import ImageUploadModal from '@/components/UploadModal'
+import DecleanupShareModal from '@/components/DecleanupShareModal'
+import { ImpactProductModal } from '@/components/modals/ImpactProductModal'
+import ImageUploadModal from '@/components/modals/UploadModal'
+import PreviewPage from '@/components/modals/PreviewModal'
 import { useState } from 'react'
 import Image from 'next/image'
 
@@ -11,15 +13,18 @@ interface LongButtonProps {
 }
 
 export default function Page() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isUploadModalOpen, setIsUploadModalOpen] = useState(false)
+  const [uploadedImages, setUploadedImages] = useState<File[]>([])
+  const [isShareModal, setIsShareModal] = useState(false)
 
-      const [isModalOpen,setIsModalOpen]=useState(false)
-      const [uploadedImages, setUploadedImages] = useState<File[]>([]);
-      const handleSubmit = (images: File[]) => {
-        setUploadedImages(images);
-        console.log('Uploaded images:', images);
-      };
+  const handleSubmit = (images: File[]) => {
+    setUploadedImages(images)
+    setIsShareModal(true)
+    console.log('Uploaded images:', images)
+  }
   return (
-    <div className=' bg-[#58B12F] p-4 font-bebas md:h-[745px]'>
+    <div className='bg-[#58B12F] p-4 font-bebas md:h-[745px]'>
       <div className='flex items-start justify-between px-2'>
         <div className='flex w-[535px] flex-col'>
           {/* 24 WEEKS STREAK*/}
@@ -77,7 +82,7 @@ export default function Page() {
         </div>
         <div className='w-[654px]'>
           <div className='h-[402px] w-full border-4 border-black bg-[#51A12C] px-12 py-2'>
-            <div className='flex flex-col border-4 border-[#FAFF00] my-2'>
+            <div className='my-2 flex flex-col border-4 border-[#FAFF00]'>
               <div className='bg-black'>
                 <div className='flex items-center space-x-1 px-1'>
                   <p className='text-[13.56px] text-[#58B12F]'>LVL</p>
@@ -110,8 +115,8 @@ export default function Page() {
             </div>
           </div>
           <div className='mt-4 flex h-full w-full flex-col space-y-2'>
-            <div onClick={()=>  setIsModalOpen(true)}>
-            <LongButton text='APPLY WITH CLEANUP' />
+            <div onClick={() => setIsModalOpen(true)}>
+              <LongButton text='APPLY WITH CLEANUP' />
             </div>
             <div className='mt-6'>
               <LongButton text='CLAIM NEXT LEVEL' isNotBlack />
@@ -126,10 +131,23 @@ export default function Page() {
         </div>
       </div>
 
-      <ImageUploadModal
+      <ImpactProductModal
         isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
+        onClose={() => {
+          setIsModalOpen(false)
+          setIsUploadModalOpen(true)
+        }
+        }
+      />
+
+      <ImageUploadModal
+        isOpen={isUploadModalOpen}
+        onClose={() => setIsUploadModalOpen(false)}
         onSubmit={handleSubmit}
+      />
+      <PreviewPage
+        isOpen={isShareModal}
+        onClose={() => setIsShareModal(false)}
       />
     </div>
   )

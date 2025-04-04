@@ -1,5 +1,6 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import { ContextProvider } from '@/context/ContextApi'
 
 import '@/app/globals.css'
 
@@ -17,9 +18,11 @@ export default function RootLayout({
     <html lang='en'>
       <body>
         <div className='border-8 border-black'>
-          <Header />
-          {children}
-          <Footer />
+          <ContextProvider>
+            <Header />
+            {children}
+            <Footer />
+          </ContextProvider>
         </div>
       </body>
     </html>

@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-import StellarIcon from "@/public/Stellar_Icon.png";
+import StellarIcon from "@/public/stellar.png";
 
 
 const Footer: React.FC = () => {
