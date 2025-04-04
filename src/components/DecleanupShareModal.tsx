@@ -41,7 +41,7 @@ const DecleanupShareModal: React.FC<DecleanupShareModalProps> = ({ isOpen, onClo
       >
         &times;
       </button>
-      <div className="relative bg-[#FAFF00] text-black w-[95%] rounded-b-2xl p-6 h-[60%] mb-[2%]">
+      <div className="relative bg-[#FAFF00] text-black w-[95%] rounded-b-2xl p-6  h-[70%] mb-[2%]">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
           <motion.div
             className="w-full max-w-[150px] mx-auto md:max-w-none"
@@ -52,12 +52,12 @@ const DecleanupShareModal: React.FC<DecleanupShareModalProps> = ({ isOpen, onClo
               src="/decleanup_anim.jpeg"
               alt="Decleanup Impact Product"
               width={150}
-              height={110}
+              height={90}
               className="w-full h-auto rounded-lg"
             />
           </motion.div>
-          <div className="md:col-span-2 text-left">
-            <p className="text-base md:text-lg lg:text-xl xl:text-2xl font-semibold leading-tight">
+          <div className="md:col-span-2 text-left font-bebas">
+            <p className="text-base md:text-lg lg:text-xl xl:text-2xl  font-semibold leading-tight">
               CONGRATULATIONS, YOU'VE JUST RECEIVED THE FIRST LEVEL OF DECLEANUP 
             </p>
             <p className="text-base md:text-lg lg:text-xl xl:text-2xl font-semibold leading-tight">
