@@ -6,7 +6,6 @@ import { X, ChevronRight } from 'lucide-react'
 interface ModalProps {
   isOpen: boolean
   onClose: () => void
-  //   onNext?: () => void;
 }
 
 export const ImpactProductModal: React.FC<ModalProps> = ({
