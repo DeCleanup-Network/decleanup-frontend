@@ -119,7 +119,10 @@ const ImageUploadModal = ({
                   
                   <button
                     className="my-4 h-10 w-full bg-black text-2xl text-[#FAFF00] md:h-12 md:text-3xl lg:h-14 lg:text-4xl"
-                    onClick={handleSubmit}
+                    onClick={() => {
+                      handleSubmit();
+                      handleClose();
+                    }}
                   >
                     send
                   </button>

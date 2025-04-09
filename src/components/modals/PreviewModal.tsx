@@ -29,7 +29,7 @@ const PreviewPage: React.FC<DecleanupShareModalProps> = ({
 
   return (
     <div className='fixed inset-0 z-50 flex items-end bg-black bg-opacity-80'>
-      <div className='relative w-full overflow-hidden rounded-lg bg-gray-900 md:h-[40rem]'>
+      <div className='relative w-full overflow-hidden rounded-lg md:h-[33rem]'>
         {/* Close button */}
         <button
           onClick={onClose}
@@ -43,25 +43,31 @@ const PreviewPage: React.FC<DecleanupShareModalProps> = ({
           <div className='h-full rounded bg-[#FAFF00] p-2 md:p-4'>
             <div className='flex h-full flex-col p-2 md:flex-row md:justify-between md:p-5'>
               {/* Image uploaders */}
-              <div className='mb-4 w-full md:mb-0 md:flex md:w-[70%] md:flex-row md:justify-between'>
+              <div className='w-full items-end md:flex md:w-[70%] md:flex-row '>
                 {cleanupPicture.before && (
-                  <div className='w-full flex-1 overflow-hidden rounded'>
-                    <h3 className='mb-2 text-center font-bold'>Before</h3>
+                  <div className='w-96  overflow-hidden rounded flex items-start flex-col'>
+                    <h3 className='mb-8 font-bold text-2xl'>
+                      <span>1</span>
+                       <span className='ml-4'>Before</span>
+                      </h3>
                     <img
                       src={URL.createObjectURL(cleanupPicture.before)}
                       alt='Before cleanup'
-                      className='h-full w-full object-contain'
+                      className='h-80 w-full object-cover mt-4'
                     />
                   </div>
                 )}
 
                 {cleanupPicture.after && (
-                  <div className='w-full flex-1 overflow-hidden rounded'>
-                    <h3 className='mb-2 text-center font-bold'>After</h3>
+                  <div className='w-96 flex items-start  overflow-hidden rounded flex-col ml-9'>
+                    <h3 className=' font-bold text-2xl mb-8'>
+                      <span>2</span>
+                       <span className='ml-4'>After</span>
+                      </h3>
                     <img
                       src={URL.createObjectURL(cleanupPicture.after)}
                       alt='After cleanup'
-                      className='h-full w-full object-contain'
+                      className='h-80 w-full object-cover mt-4'
                     />
                   </div>
                 )}
@@ -75,13 +81,11 @@ const PreviewPage: React.FC<DecleanupShareModalProps> = ({
 
               {/* Right sidebar */}
               <div className='flex w-full flex-col justify-between md:w-[28%] lg:w-[20%]'>
-
-              <div className="mt-4 md:mt-0">
-                  
-                  
-                  <button
-                    className="my-4 h-10 w-full bg-black text-2xl text-[#FAFF00] md:h-12 md:text-3xl lg:h-14 lg:text-4xl"
-                  >
+                <li className='text-2xl'>
+                 After the team review the proof  of cleanup, come back to claim your new level. Usually the process takes from 2 to 12 hours.  Contact us in telegram group if you have questions or for troubleshooting
+                </li>
+                <div className='mt-4 md:mt-0'>
+                  <button className='my-4 h-10 w-full bg-black text-2xl text-[#FAFF00] md:h-12 md:text-3xl lg:h-14 lg:text-4xl'>
                     In Review
                   </button>
                 </div>
@@ -91,46 +95,6 @@ const PreviewPage: React.FC<DecleanupShareModalProps> = ({
         </div>
       </div>
     </div>
-    // <div className='fixed inset-0 z-50 flex items-end justify-center bg-black bg-opacity-75'>
-    //
-    //   <div className='h-full rounded bg-[rgb(250,255,0)] p-2 md:p-4  text-black'>
-    //     <div className="flex   w-[60%] flex-row">
-    //       {cleanupPicture.before && (
-    //         <div className="w-full flex-1 overflow-hidden rounded">
-    //           <h3 className="mb-2 text-center font-bold">Before</h3>
-    //           <img
-    //             src={URL.createObjectURL(cleanupPicture.before)}
-    //             alt="Before cleanup"
-    //             className="h-full w-full object-contain"
-    //           />
-    //         </div>
-    //       )}
-
-    //       {cleanupPicture.after && (
-    //         <div className="w-full flex-1 overflow-hidden rounded">
-    //           <h3 className="mb-2 text-center font-bold">After</h3>
-    //           <img
-    //             src={URL.createObjectURL(cleanupPicture.after)}
-    //             alt="After cleanup"
-    //             className="h-full w-full object-contain"
-    //           />
-    //         </div>
-    //       )}
-
-    //       {!cleanupPicture.before && !cleanupPicture.after && (
-    //         <div className="flex h-full items-center justify-center">
-    //           <p>No images to preview</p>
-    //         </div>
-    //       )}
-    //     </div>
-
-    //     <div className=' '>
-    //       <button className='w-60 transform bg-black px-6 py-3 text-lg text-[#FAFF00] transition-transform hover:scale-105'>
-    //         In Review
-    //       </button>
-    //     </div>
-    //   </div>
-    // </div>
   )
 }
 

@@ -147,7 +147,11 @@ export default function Page() {
       />
       <PreviewPage
         isOpen={isShareModal}
-        onClose={() => setIsShareModal(false)}
+        onClose={() =>{
+          setIsShareModal(false)
+        } 
+         
+        }
       />
     </div>
   )
