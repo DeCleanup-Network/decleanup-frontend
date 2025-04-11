@@ -47,9 +47,6 @@ const ImageUploadModal = ({
     setBeforeImage(null);
     setAfterImage(null);
     setCheckBox(false);
-    
-    // Don't close the modal if you want to show preview
-    // onClose(); // Remove this if you want to show preview immediately
   };
 
 
@@ -61,18 +58,18 @@ const ImageUploadModal = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-end bg-black bg-opacity-80">
-      <div className="relative w-full overflow-hidden rounded-lg bg-gray-900 md:h-[40rem]">
+      <div className="relative w-full overflow-hidden rounded-lg md:h-[40rem]">
         {/* Close button */}
         <button
           onClick={handleClose}
-          className="absolute right-2 top-2 rounded-full p-1 text-white hover:bg-gray-700"
+          className="absolute right-2 top-2 rounded-full p-1 text-white mr-3 hover:bg-gray-700"
         >
-          <X size={24} />
+          <X size={44} />
         </button>
 
         {/* Header */}
-        <div className="bg-gray-800 px-4 py-3">
-          <h2 className="font-bold text-white">Upload Image</h2>
+        <div className="ml-2 px-4 py-3">
+          <h2 className="font-bold text-white text-xl">Upload Image</h2>
         </div>
 
         {/* Content */}

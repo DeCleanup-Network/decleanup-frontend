@@ -5,7 +5,7 @@ import React from 'react';
 
 const SideBar = () => {
   return (
-    <div className="w-full flex flex-col px-2 sm:px-5 pt-12 sm:pt-24" style={{ backgroundColor: '#58b12f' }}>
+    <div className="w-full flex flex-col px-2 sm:px-5" style={{ backgroundColor: '#58b12f' }}>
       {/* Card Header with Image */}
       <div className="relative mb-3 sm:mb-5 border-2 sm:border-4 border-[#ecf110] rounded">
         {/* Top Black Bar with LVL and Progress */}

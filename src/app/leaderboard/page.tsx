@@ -5,7 +5,7 @@ const LeaderBoard = () => {
   return (
     <div className='flex flex-row'>
       <SideBar />
-      <div className='w-[80%]'>
+      <div className='w-[90%]'>
         <Table />
       </div>
     </div>

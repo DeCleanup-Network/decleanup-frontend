@@ -4,6 +4,7 @@ import DecleanupShareModal from '@/components/DecleanupShareModal'
 import { ImpactProductModal } from '@/components/modals/ImpactProductModal'
 import ImageUploadModal from '@/components/modals/UploadModal'
 import PreviewPage from '@/components/modals/PreviewModal'
+import Link from 'next/link'
 import { useState } from 'react'
 import Image from 'next/image'
 
@@ -24,7 +25,7 @@ export default function Page() {
     console.log('Uploaded images:', images)
   }
   return (
-    <div className='bg-[#58B12F] p-4 font-bebas md:h-[745px]'>
+    <div className='bg-[#58B12F] p-4 font-bebas md:h-[730px]'>
       <div className='flex items-start justify-between px-2'>
         <div className='flex w-[535px] flex-col'>
           {/* 24 WEEKS STREAK*/}
@@ -71,9 +72,9 @@ export default function Page() {
             </div>
             <p className='text-right underline'>LEARN HOW TO EARN $DCU</p>
           </div>
-          <div className='mt-24'>
+          <Link href={"/leaderboard"} className='mt-24'>
             <LongButton text='LEADERBOARD' />
-          </div>
+          </Link>
 
           <div className='mt-32'>
             <p className='left underline'>earn more $DCU together</p>
