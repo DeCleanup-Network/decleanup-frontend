@@ -13,7 +13,7 @@ const Login: React.FC = () => {
   }
 
   return (
-    <div className='flex h-[745px] flex-col bg-[#58b12f]'>
+    <div className='flex h-[730px] flex-col bg-[#58b12f]'>
       {/* Main Content */}
       <div className='flex flex-col items-center'>
         {/* Heading */}
