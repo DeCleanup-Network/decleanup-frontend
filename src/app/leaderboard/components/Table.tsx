@@ -58,14 +58,14 @@ export default function Table() {
   const paginatedData = data.slice(startIndex, startIndex + itemsPerPage)
 
   return (
-    <div className=' bg-[#58b12f] h-full'>
+    <div className='h-full'>
       <div className='mx-auto w-full  overflow-x-auto px-5'>
         {loading && <p className='text-center text-white'>Loading...</p>}
         {!loading && (
           <>
             <table className='table-auto border-separate border-spacing-y-3'>
               <thead className='bg-[#ECF9F033]'>
-                <tr className='border-[1px] border-[#ECF9F033] text-[#31591F]'>
+                <tr className='border-[1px] border-[#ECF9F033] text-black'>
                   <th
                     className='w-14 cursor-pointer border-[1px] border-[#ECF9F033] px-6 py-4 text-left text-[15px] font-normal transition-colors duration-200 hover:bg-[#FAFF00] hover:text-black'
                     onClick={() => handleSort('rank')}
@@ -119,7 +119,7 @@ export default function Table() {
                     key={id}
                     className='border-b border-gray-100 bg-[#0000001A] text-[15px] font-normal'
                   >
-                    <td className='w-14 bg-[#ECF9F033] px-6 py-4 text-base text-[#31591F]'>
+                    <td className='w-14 bg-[#ECF9F033] px-6 py-4 text-base text-black font-bold'>
                       {user.rank}
                     </td>
                     <td className='w-[323px] px-6 py-4 text-center text-[1.15rem] text-[#FAFF00]'>

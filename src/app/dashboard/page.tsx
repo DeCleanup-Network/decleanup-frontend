@@ -56,19 +56,19 @@ export default function Page() {
           <div className='mt-4 flex flex-col space-y-1'>
             <div className='flex items-center justify-between border-b border-b-black'>
               <p className='text-[24px]'>CLEANUPS DONE</p>
-              <p className='text-[24px] text-[#FAFF00]'>10</p>
+              <p className='text-[24px] text-[#FAFF00]'>0</p>
             </div>
             <div className='flex items-center justify-between border-b border-b-black'>
               <p className='text-[24px]'>REFERRALS </p>
-              <p className='text-[24px] text-[#FAFF00]'>19</p>
+              <p className='text-[24px] text-[#FAFF00]'>0</p>
             </div>
             <div className='flex items-center justify-between border-b border-b-black'>
               <p className='text-[24px]'>STREAK</p>
-              <p className='text-[24px] text-[#FAFF00]'>10</p>
+              <p className='text-[24px] text-[#FAFF00]'>0</p>
             </div>
             <div className='flex items-center justify-between border-b border-b-black'>
               <p className='text-[40px]'>TOTAL $DCU</p>
-              <p className='text-[40px] text-[#FAFF00]'>39</p>
+              <p className='text-[40px] text-[#FAFF00]'>0</p>
             </div>
             <p className='text-right underline'>LEARN HOW TO EARN $DCU</p>
           </div>
@@ -112,7 +112,7 @@ export default function Page() {
             </div>
             <div className='mt-[-2px] flex w-full items-center justify-between text-[24px]'>
               <p className='text-black'>IMPACT VALUE</p>
-              <p className='text-[#FAFF00]'>2</p>
+              <p className='text-[#FAFF00]'>0</p>
             </div>
           </div>
           <div className='mt-4 flex h-full w-full flex-col space-y-2'>
