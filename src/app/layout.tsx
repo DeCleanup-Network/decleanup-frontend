@@ -16,13 +16,15 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang='en'>
-      <body>
-        <div className='border-8 border-black'>
+    <html lang='en' className='h-full'>
+      <body className='h-full'>
+        <div className='border-8 border-black h-screen flex flex-col'>
           <ContextProvider>
             <Providers>
               <Header />
-              {children}
+              <main className='flex-1 overflow-y-auto bg-[#58B12F]'>
+                {children}
+              </main>
               <Footer />
             </Providers>
           </ContextProvider>

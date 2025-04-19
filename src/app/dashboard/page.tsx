@@ -25,7 +25,7 @@ export default function Page() {
     console.log('Uploaded images:', images)
   }
   return (
-    <div className='bg-[#58B12F] p-4 font-bebas md:h-[730px]'>
+    <div className='bg-[#58B12F] p-4 font-bebas h-[calc(95vh-160px)] min-h-[calc(98vh-160px)]'>
       <div className='flex items-start justify-between px-2'>
         <div className='flex w-[535px] flex-col'>
           {/* 24 WEEKS STREAK*/}

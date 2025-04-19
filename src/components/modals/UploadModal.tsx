@@ -81,7 +81,7 @@ const ImageUploadModal = ({
                 <ImageUploader
                   image={beforeImage}
                   onImageChange={setBeforeImage}
-                  label="1. TAKE A PHOTO OF THE AREA BEFORE YOU START. STATE THE PROJECT NAME"
+                  label="1. Snap a photo of the area before you start. Show the impact your cleanup will make!"
                   onDragOver={handleDragOver}
                   onDrop={(e) => {
                     e.preventDefault();
@@ -108,7 +108,7 @@ const ImageUploadModal = ({
               </div>
 
               {/* Right sidebar */}
-              <div className="flex w-full flex-col justify-between md:w-[28%] lg:w-[20%]">
+              <div className="flex w-full mb-5 flex-col justify-between md:w-[28%] lg:w-[20%]">
                 <UploadInstructions />
                 
                 <div className="mt-4 md:mt-0">
