@@ -3,7 +3,7 @@ import Table from './components/Table'
 
 const LeaderBoard = () => {
   return (
-    <div className='flex flex-row w-full bg-[#58b12f] '>
+    <div className='flex flex-row w-full bg-[#58b12f] h-[calc(95vh-160px)] min-h-[calc(98vh-160px)]'>
       <div className='w-[30%]  py-4 '>
       <SideBar />
       </div>

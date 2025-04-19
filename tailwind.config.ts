@@ -9,7 +9,7 @@ export default {
       fontFamily: { 
         mono: ['var(--font-mono)'],
         nunito: ['Nunito', 'sans-serif'],
-        bebas: ['Bebas Neue', 'cursive'],
+        bebas: [ 'Bebas Neue', 'sans-serif'],
        },
       colors: {
         background: 'hsl(var(--background))',
