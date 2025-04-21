@@ -77,7 +77,7 @@ const ImageUploadModal = ({
           <div className="h-full rounded bg-[#FAFF00] p-2 md:p-4">
             <div className="flex h-full flex-col p-2 md:flex-row md:justify-between md:p-5">
               {/* Image uploaders */}
-              <div className="mb-4 w-full md:mb-0 md:flex md:w-[70%] md:flex-row md:justify-between">
+              <div className="mb-4 w-full md:mb-0 md:flex md:w-[70%] md:flex-row ">
                 <ImageUploader
                   image={beforeImage}
                   onImageChange={setBeforeImage}
@@ -97,6 +97,7 @@ const ImageUploadModal = ({
                   onImageChange={setAfterImage}
                   label="2. Capture the transformed space! Upload your after photo to complete your submission and earn rewards."
                   onDragOver={handleDragOver}
+                  
                   onDrop={(e) => {
                     e.preventDefault();
                     if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
