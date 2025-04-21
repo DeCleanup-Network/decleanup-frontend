@@ -15,7 +15,7 @@ export const ImpactProductModal: React.FC<ModalProps> = ({
   if (!isOpen) return null
 
   return (
-    <div className='fixed inset-0 z-50 flex bg-black/80'>
+    <div className='fixed inset-0 z-50 flex bg-black/80 overflow-hidden p-4'>
       <button
         onClick={onClose}
         className='absolute right-4 top-4 z-10 text-white hover:opacity-80'
@@ -25,7 +25,7 @@ export const ImpactProductModal: React.FC<ModalProps> = ({
       </button>
 
       {/* Main modal content with the 2-column layout */}
-      <div className='h-full w-[30%] bg-[#FAFF00] p-6'>
+      <div className='h-full w-[30%] bg-[#FAFF00] p-6  rounded-tl-2xl rounded-bl-2xl overflow-hidden'>
         <div className='text-black'>
           <div className='space-y-8'>
             <div className='text-2xl'>

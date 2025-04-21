@@ -62,8 +62,8 @@ const Login: React.FC = () => {
             </div>
           ) : (
             <div className='w-full space-y-4'>
-              <button className='h-24 w-full rounded bg-black py-3 text-2xl font-bold text-[#FAFF00] transition-all hover:bg-gray-800 md:text-4xl'>
-                <Link href={'/dashboard'}>START CLEANUP</Link>
+              <button className='h-24 w-full  font-bebas rounded bg-black py-3 font-bold text-[#FAFF00] transition-all hover:bg-gray-800 md:text-4xl'>
+                <Link href={'/dashboard'} className='text-7xl  mt-2'>START CLEANUP</Link>
               </button>
 
               <div className='flex items-center justify-center rounded bg-black bg-opacity-80  text-white'>

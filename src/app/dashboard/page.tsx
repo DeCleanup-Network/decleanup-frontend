@@ -81,9 +81,9 @@ export default function Page() {
             <LongButton text='Invite friends' />
           </div>
         </div>
-        <div className='w-[654px]'>
-          <div className='h-[402px] w-full border-4 border-black bg-[#51A12C] px-12 py-2'>
-            <div className='my-2 flex flex-col border-4 border-[#FAFF00]'>
+        <div className='w-[27rem]'>
+          <div className='h-[402px] w-full flex justify-center border-4 border-black bg-[#51A12C] px-12 py-2'>
+            <div className='my-2 flex flex-col  w-[323.5px]  border-4 border-[#FAFF00]'>
               <div className='bg-black'>
                 <div className='flex items-center space-x-1 px-1'>
                   <p className='text-[13.56px] text-[#58B12F]'>LVL</p>
@@ -96,8 +96,10 @@ export default function Page() {
                   <div className='h-[3.55px] w-full bg-[#FAFF00] opacity-50'></div>
                 </div>
               </div>
-              <div className='h-[291px] w-full'>
-                <Image src={IsolationMode} alt='' className='h-full w-full' />
+              
+              {/* nft image */}
+              <div className=''>
+                <Image src={IsolationMode} alt='' className='h-full object-contain w-full' />
               </div>
               <div className='flex items-center justify-between bg-black px-1 text-[13.56px] text-[#FAFF00]'>
                 <p>DECLEANUP NETWORK</p>
