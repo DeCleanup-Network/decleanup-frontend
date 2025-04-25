@@ -18,11 +18,11 @@ export default function RootLayout({
   return (
     <html lang='en' className='h-full'>
       <body className='h-full'>
-        <div className='border-8 border-black h-screen flex flex-col'>
+        <div className='flex h-screen flex-col border-black md:border-8'>
           <ContextProvider>
             <Providers>
               <Header />
-              <main className='flex-1 overflow-y-auto bg-[#58B12F]'>
+              <main className='xs:overflow-y-scroll xs:overflow-x-hidden md:overflow-y-none flex-1 bg-[#58B12F] md:overflow-y-auto'>
                 {children}
               </main>
               <Footer />

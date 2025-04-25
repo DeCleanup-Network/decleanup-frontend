@@ -1,31 +1,31 @@
-import React from "react";
-import Image from "next/image";
+import React from 'react'
+import Image from 'next/image'
 
-import StellarIcon from "@/public/stellar.png";
-
+import StellarIcon from '@/public/stellar.png'
 
 const Footer: React.FC = () => {
-    return (
-     <div className="bg-[#58B12F] font-bebas border-t border-black  px-5 py-5 flex justify-between items-center text-2xl">
-       <p>2025©</p>
-       <div className="flex space-x-3">
-        <a href="" className="block">
-          TELEGRAM</a>
-          <a href="" className="block">
-            GITHUB</a>
-            <a href="" className="block">
-              LITEPAPER
-            </a>
-            <a href="" className="block">
-              BUG REPORT
-            </a>
-       </div>
-       <div>
-          <Image src={StellarIcon} alt="" />
-       </div>
-     </div>
-    );
-  };
-  
-  export default Footer;
-  
+  return (
+    <div className='xs:text-sm flex flex-col items-center justify-between gap-5 border-t border-black bg-[#58B12F] px-5 py-5 font-sans text-2xl sm:text-lg sm:font-semibold md:flex-row'>
+      <p>2025©</p>
+      <div className='flex flex-wrap justify-center gap-3 font-normal'>
+        <a href='#!' className=''>
+          TELEGRAM
+        </a>
+        <a href='#!' className=''>
+          GITHUB
+        </a>
+        <a href='#!' className=''>
+          LITEPAPER
+        </a>
+        <a href='#!' className='whitespace-nowrap'>
+          BUG REPORT
+        </a>
+      </div>
+      <div>
+        <Image src={StellarIcon} alt='' className='w-28 md:w-auto' />
+      </div>
+    </div>
+  )
+}
+
+export default Footer
