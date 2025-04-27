@@ -17,9 +17,11 @@ const Login: React.FC = () => {
       {/* Main Content */}
       <div className='flex h-[calc(95vh-160px)] min-h-[calc(98vh-160px)] flex-col items-center'>
         {/* Heading */}
-        <h2 className='sm:text-[200px] mb-14 w-full  p-2 text-center font-bebas text-4xl font-normal md:text-[220px] pt-24'>
+        <div className=' w-full flex justify-center items-center '>
+        <h2 className=' font-bebas text-[105px] md:text-[140px] text-center  xl:text-[200px] font-normal leading-none'>
           DECLEANUP REWARDS
         </h2>
+        </div>
 
         <hr className='my-4 w-full border-t-2 border-black' />
 
