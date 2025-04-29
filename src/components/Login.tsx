@@ -27,19 +27,19 @@ const Login: React.FC = () => {
       {/* Main Content */}
       <div className='flex h-[calc(95vh-160px)] min-h-[calc(98vh-160px)] flex-col items-center'>
         {/* Heading */}
-        <h2 className='xs:text-[90px] xs:leading-[6rem] w-full py-5 text-center font-bebas font-semibold sm:text-[120px] md:text-[150px] md:font-normal md:leading-[8rem] lg:text-[200px] lg:leading-[10rem]'>
+        <h2 className='w-full py-5 text-center font-bebas font-semibold xs:text-[90px] xs:leading-[6rem] sm:text-[120px] md:text-[150px] md:font-normal md:leading-[8rem] lg:text-[200px] lg:leading-[10rem]'>
           DECLEANUP REWARDS
         </h2>
 
         <hr className='mb-4 w-full border-t-2 border-black' />
 
         {/* Subheading and Description */}
-        <div className='xs:px-2 flex flex-col items-center py-2 text-center sm:px-4'>
-          <p className='xs:hidden mb-4 bg-[#FAFF00] p-2 font-bebas text-lg font-normal sm:text-xl md:text-6xl xl:block'>
+        <div className='flex flex-col items-center py-2 text-center xs:px-2 sm:px-4'>
+          <p className='mb-4 bg-[#FAFF00] p-2 font-bebas text-lg font-normal xs:hidden sm:text-xl md:text-6xl xl:block'>
             FIRST DAPP TO SELF-TOKENIZE ENVIRONMENTAL CLEANUP EFFORTS
           </p>
           <div className='mb-3 md:hidden'>
-            <div className='xs:text-xl xs:leading-none font-bebas leading-none text-black sm:text-3xl md:text-[3.1rem] md:leading-snug'>
+            <div className='font-bebas leading-none text-black xs:text-xl xs:leading-none sm:text-3xl md:text-[3.1rem] md:leading-snug'>
               {lines.map((line, index) => (
                 <div
                   key={index}
@@ -52,7 +52,7 @@ const Login: React.FC = () => {
           </div>
 
           {/* Tablet */}
-          <div className='xs:hidden mb-5 md:block lg:hidden xl:hidden'>
+          <div className='mb-5 xs:hidden md:block lg:hidden xl:hidden'>
             <div className='font-bebas text-6xl leading-none text-black'>
               {linesMd.map((line, index) => (
                 <div
@@ -66,7 +66,7 @@ const Login: React.FC = () => {
           </div>
 
           {/* Laptop screen */}
-          <div className='xs:hidden mb-5 lg:block xl:hidden'>
+          <div className='mb-5 xs:hidden lg:block xl:hidden'>
             <div className='font-bebas text-6xl leading-none text-black'>
               {linesLg.map((line, index) => (
                 <div
@@ -101,7 +101,7 @@ const Login: React.FC = () => {
                         onClick={openConnectModal}
                         className='flex h-full w-full items-center justify-center'
                       >
-                        <span className='xs:text-2xl font-bebas font-medium text-[#FAFF00] sm:text-4xl md:text-7xl'>
+                        <span className='font-bebas font-medium text-[#FAFF00] xs:text-2xl sm:text-4xl md:text-7xl'>
                           Connect Wallet
                         </span>
                       </button>
