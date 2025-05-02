@@ -1,7 +1,9 @@
 'use client'
 import { useState } from 'react'
 import { useAccount } from 'wagmi'
-import { ConnectButton } from '@rainbow-me/rainbowkit'
+
+import { ConnectButton } from 'thirdweb/react'
+import { client } from '@/app/client'
 import Link from 'next/link'
 
 const Login: React.FC = () => {
@@ -17,9 +19,11 @@ const Login: React.FC = () => {
       {/* Main Content */}
       <div className='flex h-[calc(95vh-160px)] min-h-[calc(98vh-160px)] flex-col items-center'>
         {/* Heading */}
-        <h2 className='sm:text-[200px] mb-14 w-full  p-2 text-center font-bebas text-4xl font-normal md:text-[220px] pt-24'>
-          DECLEANUP REWARDS
-        </h2>
+        <div className='flex w-full items-center justify-center'>
+          <h2 className='text-center font-bebas text-[105px] font-normal leading-none md:text-[140px] xl:text-[200px]'>
+            DECLEANUP REWARDS
+          </h2>
+        </div>
 
         <hr className='my-4 w-full border-t-2 border-black' />
 
@@ -41,56 +45,25 @@ const Login: React.FC = () => {
         <div className='w-full px-4 py-4'>
           {!isConnected ? (
             <div className='flex h-24 w-full items-center justify-center rounded bg-black py-3 font-bold text-[#FAFF00] transition-all hover:bg-gray-800'>
-              <ConnectButton.Custom>
-                {({ account, openAccountModal, openConnectModal, mounted }) => {
-                  const connected = mounted && account
-
-                  return (
-                    <div>
-                      <button
-                        onClick={openConnectModal}
-                        className='flex h-full w-full items-center justify-center'
-                      >
-                        <span className='text-2xl font-bebas font-medium text-[#FAFF00] md:text-7xl'>
-                          Connect Wallet
-                        </span>
-                      </button>
-                    </div>
-                  )
-                }}
-              </ConnectButton.Custom>
+                <ConnectButton
+                  client={client}
+                  appMetadata={{
+                    name: 'Example App',
+                    url: 'https://example.com',
+                  }}
+                />
+              
             </div>
           ) : (
             <div className='w-full space-y-4'>
-              <button className='h-24 w-full  font-bebas rounded bg-black py-3 font-bold text-[#FAFF00] transition-all hover:bg-gray-800 md:text-4xl'>
-                <Link href={'/dashboard'} className='text-7xl  mt-2'>START CLEANUP</Link>
+              <button className='h-24 w-full rounded bg-black py-3 font-bebas font-bold text-[#FAFF00] transition-all hover:bg-gray-800 md:text-4xl'>
+                <Link href={'/dashboard'} className='mt-2 text-7xl'>
+                  START CLEANUP
+                </Link>
               </button>
 
-              <div className='flex items-center justify-center rounded bg-black bg-opacity-80  text-white'>
+              <div className='flex items-center justify-center rounded bg-black bg-opacity-80 text-white'>
                 <div className='mr-2 h-3 w-3 rounded-full bg-[#58b12f]'></div>
-                <ConnectButton.Custom>
-                  {({
-                    account,
-                    openAccountModal,
-                    openConnectModal,
-                    mounted,
-                  }) => {
-                    const connected = mounted && account
-
-                    return (
-                      <div>
-                        <button
-                          onClick={openAccountModal}
-                          className='flex w-full items-center justify-center'
-                        >
-                          <span className='font-medium text-white'>
-                            {account?.displayName}
-                          </span>
-                        </button>
-                      </div>
-                    )
-                  }}
-                </ConnectButton.Custom>
               </div>
             </div>
           )}

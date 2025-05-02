@@ -25,35 +25,60 @@ export default function Page() {
     console.log('Uploaded images:', images)
   }
   return (
-    <div className='bg-[#58B12F] p-4 font-bebas h-[calc(95vh-160px)] min-h-[calc(98vh-160px)]'>
-      <div className='flex items-start justify-between px-2'>
-        <div className='flex w-[535px] flex-col'>
+    <div className='h-[calc(95vh-160px)] min-h-[calc(98vh-160px)] bg-[#58B12F] font-bebas lg:p-4'>
+      <div className='flex flex-col items-start justify-between lg:flex-row lg:gap-12'>
+        <div className='flex w-full flex-col bg-[#FAFF00] mt-4 lg:order-first lg:w-1/3 lg:bg-[#58B12F]'>
           {/* 24 WEEKS STREAK*/}
-          <div className='flex h-[61px] w-full bg-black p-1'>
-            <div className='flex items-center justify-center bg-black p-5'>
-              <svg
-                width='33'
-                height='36'
-                viewBox='0 0 33 36'
-                fill='none'
-                xmlns='http://www.w3.org/2000/svg'
-              >
-                <path
-                  d='M16.4445 21.6724L12.0662 25.8245C10.9151 26.9371 10.2778 28.3873 10.2778 29.9369C10.2778 33.1554 13.0528 35.7778 16.4445 35.7778C19.8361 35.7778 22.6111 33.1554 22.6111 29.9369C22.6111 28.3873 21.9739 26.9172 20.8228 25.8245L16.4445 21.6724Z'
-                  fill='#FAFF00'
-                />
-                <path
-                  d='M24.6666 7.96428L23.7621 9.05696C21.3366 11.9774 16.4444 10.3284 16.4444 6.57361V0.0175781C16.4444 0.0175781 0 7.96428 0 21.871C0 27.6721 3.20665 32.7381 7.99608 35.4996C6.84497 33.9301 6.16664 32.0031 6.16664 29.9369C6.16664 27.3145 7.23553 24.851 9.1883 22.9836L16.4444 16.1097L23.7005 23.0034C25.6532 24.851 26.7221 27.3145 26.7221 29.9568C26.7221 31.9832 26.0849 33.8507 24.9749 35.4202C28.8599 33.1355 31.7377 29.3409 32.601 24.8908C33.9577 17.8381 30.4016 11.1827 24.6666 7.96428Z'
-                  fill='#FAFF00'
-                />
-              </svg>
-            </div>
-            <div className='flex w-full items-center justify-start bg-[#58B12F] px-2'>
-              <p className='text-[40px]'>24 WEEKS STREAK</p>
+          <div className='flex h-[61px] w-full items-center justify-between py-8'>
+            <div className='mx-auto w-full border-4 border-black'>
+              <div className='mx-auto flex w-fit lg:w-full'>
+                <div className='hidden items-center justify-center bg-black p-5 lg:flex'>
+                  <svg
+                    width='30'
+                    height='30'
+                    viewBox='0 0 33 36'
+                    fill='none'
+                    xmlns='http://www.w3.org/2000/svg'
+                  >
+                    <path
+                      d='M16.4445 21.6724L12.0662 25.8245C10.9151 26.9371 10.2778 28.3873 10.2778 29.9369C10.2778 33.1554 13.0528 35.7778 16.4445 35.7778C19.8361 35.7778 22.6111 33.1554 22.6111 29.9369C22.6111 28.3873 21.9739 26.9172 20.8228 25.8245L16.4445 21.6724Z'
+                      fill='#FAFF00'
+                    />
+                    <path
+                      d='M24.6666 7.96428L23.7621 9.05696C21.3366 11.9774 16.4444 10.3284 16.4444 6.57361V0.0175781C16.4444 0.0175781 0 7.96428 0 21.871C0 27.6721 3.20665 32.7381 7.99608 35.4996C6.84497 33.9301 6.16664 32.0031 6.16664 29.9369C6.16664 27.3145 7.23553 24.851 9.1883 22.9836L16.4444 16.1097L23.7005 23.0034C25.6532 24.851 26.7221 27.3145 26.7221 29.9568C26.7221 31.9832 26.0849 33.8507 24.9749 35.4202C28.8599 33.1355 31.7377 29.3409 32.601 24.8908C33.9577 17.8381 30.4016 11.1827 24.6666 7.96428Z'
+                      fill='#FAFF00'
+                    />
+                  </svg>
+                </div>
+
+                {/* mobile svg */}
+                <div className='flex items-center justify-center p-5 lg:hidden'>
+                  <svg
+                    width='36'
+                    height='36'
+                    viewBox='0 0 33 36'
+                    fill='none'
+                    xmlns='http://www.w3.org/2000/svg'
+                  >
+                    <path
+                      d='M16.4445 21.6724L12.0662 25.8245C10.9151 26.9371 10.2778 28.3873 10.2778 29.9369C10.2778 33.1554 13.0528 35.7778 16.4445 35.7778C19.8361 35.7778 22.6111 33.1554 22.6111 29.9369C22.6111 28.3873 21.9739 26.9172 20.8228 25.8245L16.4445 21.6724Z'
+                      fill='#58B12F'
+                    />
+                    <path
+                      d='M24.6666 7.96428L23.7621 9.05696C21.3366 11.9774 16.4444 10.3284 16.4444 6.57361V0.0175781C16.4444 0.0175781 0 7.96428 0 21.871C0 27.6721 3.20665 32.7381 7.99608 35.4996C6.84497 33.9301 6.16664 32.0031 6.16664 29.9369C6.16664 27.3145 7.23553 24.851 9.1883 22.9836L16.4444 16.1097L23.7005 23.0034C25.6532 24.851 26.7221 27.3145 26.7221 29.9568C26.7221 31.9832 26.0849 33.8507 24.9749 35.4202C28.8599 33.1355 31.7377 29.3409 32.601 24.8908C33.9577 17.8381 30.4016 11.1827 24.6666 7.96428Z'
+                      fill='#58B12F'
+                    />
+                  </svg>
+                </div>
+
+                <div className='flex w-full items-center justify-start px-2 lg:bg-[#58B12F]'>
+                  <p className='text-4xl'>24 WEEKS STREAK</p>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div className='mt-4 flex flex-col space-y-1'>
+          <div className='mt-6 flex flex-col space-y-1 px-4'>
             <div className='flex items-center justify-between border-b border-b-black'>
               <p className='text-[24px]'>CLEANUPS DONE</p>
               <p className='text-[24px] text-[#FAFF00]'>0</p>
@@ -70,20 +95,29 @@ export default function Page() {
               <p className='text-[40px]'>TOTAL $DCU</p>
               <p className='text-[40px] text-[#FAFF00]'>0</p>
             </div>
-            <p className='text-right underline'>LEARN HOW TO EARN $DCU</p>
           </div>
-          <Link href={"/leaderboard"} className='mt-24'>
-            <LongButton text='LEADERBOARD' />
-          </Link>
 
-          <div className='mt-32'>
-            <p className='left underline'>earn more $DCU together</p>
-            <LongButton text='Invite friends' />
+          <div className='space-y-8 bg-[#58B12F] px-4 py-10 md:space-y-16 lg:py-4'>
+            <div className='flex flex-col gap-2'>
+              <p className='text-center text-2xl underline md:text-right'>
+                LEARN HOW TO EARN $DCU
+              </p>
+              <Link href={'/leaderboard'} className='lg:mt-24'>
+                <LongButton text='LEADERBOARD' />
+              </Link>
+            </div>
+            <div className='flex flex-col gap-2 lg:mt-32'>
+              <p className='order-last text-center text-2xl underline md:text-left lg:order-first'>
+                earn more $DCU together
+              </p>
+              <LongButton text='Invite friends' />
+            </div>
           </div>
         </div>
-        <div className='w-[27rem]'>
-          <div className='h-[402px] w-full flex justify-center border-4 border-black bg-[#51A12C] px-12 py-2'>
-            <div className='my-2 flex flex-col  w-[323.5px]  border-4 border-[#FAFF00]'>
+
+        <div className='order-first w-full px-4  lg:w-1/3'>
+          <div className='flex  w-full justify-center border-4 border-black bg-[#51A12C] px-8 py-2 md:px-4'>
+            <div className='my-2 flex w-[323.5px] flex-col border-4 border-[#FAFF00]'>
               <div className='bg-black'>
                 <div className='flex items-center space-x-1 px-1'>
                   <p className='text-[13.56px] text-[#58B12F]'>LVL</p>
@@ -96,10 +130,14 @@ export default function Page() {
                   <div className='h-[3.55px] w-full bg-[#FAFF00] opacity-50'></div>
                 </div>
               </div>
-              
+
               {/* nft image */}
               <div className=''>
-                <Image src={IsolationMode} alt='' className='h-full object-contain w-full' />
+                <Image
+                  src={IsolationMode}
+                  alt=''
+                  className='h-full w-full object-contain'
+                />
               </div>
               <div className='flex items-center justify-between bg-black px-1 text-[13.56px] text-[#FAFF00]'>
                 <p>DECLEANUP NETWORK</p>
@@ -117,7 +155,7 @@ export default function Page() {
               <p className='text-[#FAFF00]'>0</p>
             </div>
           </div>
-          <div className='mt-4 flex h-full w-full flex-col space-y-2'>
+          <div className='flex h-full w-full flex-col space-y-2 py-4'>
             <div onClick={() => setIsModalOpen(true)}>
               <LongButton text='APPLY WITH CLEANUP' />
             </div>
@@ -126,7 +164,8 @@ export default function Page() {
             </div>
           </div>
         </div>
-        <div className='flex w-[337px] flex-col space-y-2'>
+
+        <div className='flex w-full flex-col space-y-2 px-4 lg:w-1/3'>
           <LongButton text='CREATE IMPACT CIRCLE' isNotBlack />
           <LongButton text='JOIN IMPACT CIRCLE' isNotBlack />
           <LongButton text='BECOME VERIFIER' isNotBlack />
@@ -139,8 +178,7 @@ export default function Page() {
         onClose={() => {
           setIsModalOpen(false)
           setIsUploadModalOpen(true)
-        }
-        }
+        }}
       />
 
       <ImageUploadModal
@@ -150,11 +188,9 @@ export default function Page() {
       />
       <PreviewPage
         isOpen={isShareModal}
-        onClose={() =>{
+        onClose={() => {
           setIsShareModal(false)
-        } 
-         
-        }
+        }}
       />
     </div>
   )
@@ -165,8 +201,8 @@ function LongButton({ text, isNotBlack }: LongButtonProps) {
     <button
       className={
         isNotBlack
-          ? `block h-[60px] w-full bg-[#1E8428] text-center text-[40px] text-black opacity-50`
-          : `block h-[60px] w-full bg-black text-center text-[40px] text-[#FAFF00]`
+          ? `block h-[60px] w-full bg-[#1E8428] text-center text-3xl text-black opacity-50 md:text-[40px]`
+          : `block h-[60px] w-full bg-black text-center text-3xl text-[#FAFF00] md:text-[40px]`
       }
     >
       {text}
