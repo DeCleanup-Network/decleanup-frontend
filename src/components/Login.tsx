@@ -1,7 +1,9 @@
 'use client'
 import { useState } from 'react'
 import { useAccount } from 'wagmi'
-import { ConnectButton } from '@rainbow-me/rainbowkit'
+
+import { ConnectButton } from 'thirdweb/react'
+import { client } from '@/app/client'
 import Link from 'next/link'
 
 const Login: React.FC = () => {
@@ -120,29 +122,6 @@ const Login: React.FC = () => {
 
               <div className='flex items-center justify-center rounded bg-black bg-opacity-80 text-white'>
                 <div className='mr-2 h-3 w-3 rounded-full bg-[#58b12f]'></div>
-                <ConnectButton.Custom>
-                  {({
-                    account,
-                    openAccountModal,
-                    openConnectModal,
-                    mounted,
-                  }) => {
-                    const connected = mounted && account
-
-                    return (
-                      <div>
-                        <button
-                          onClick={openAccountModal}
-                          className='flex w-full items-center justify-center'
-                        >
-                          <span className='font-medium text-white'>
-                            {account?.displayName}
-                          </span>
-                        </button>
-                      </div>
-                    )
-                  }}
-                </ConnectButton.Custom>
               </div>
             </div>
           )}

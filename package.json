@@ -7,13 +7,13 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "bunx next lint",
-    "format": "bunx prettier --write ."
+    "lint": "next lint",
+    "format": "prettier --write ."
   },
   "lint-staged": {
     "src/**/*.{ts,tsx}": [
-      "bunx next lint --file",
-      "bunx prettier --check"
+      "next lint --file",
+      "prettier --check"
     ]
   },
   "dependencies": {
@@ -43,6 +43,7 @@
     "react-medium-image-zoom": "^5.2.12",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
+    "thirdweb": "^5.0.3", 
     "viem": "^2.26.2",
     "wagmi": "^2.14.16"
   },
@@ -53,10 +54,10 @@
     "@types/react": "^19.0.1",
     "@types/react-dom": "^19",
     "@types/react-window": "^1.8.8",
-    "@typescript-eslint/eslint-plugin": "^8.18.0",
-    "@typescript-eslint/parser": "^8.18.0",
+    "@typescript-eslint/eslint-plugin": "7.18.0", 
+    "@typescript-eslint/parser": "7.18.0", 
     "autoprefixer": "^10.4.20",
-    "eslint": "^9.17.0",
+    "eslint": "8.57.1", 
     "eslint-config-airbnb-typescript": "^18.0.0",
     "eslint-config-next": "^15.1.0",
     "eslint-config-prettier": "^9.1.0",
@@ -74,6 +75,5 @@
     "remark-cli": "^12.0.1",
     "tailwindcss": "^3.4.16",
     "typescript": "^5.7.2"
-  },
-  "packageManager": "yarn@4.6.0+sha512.5383cc12567a95f1d668fbe762dfe0075c595b4bfff433be478dbbe24e05251a8e8c3eb992a986667c1d53b6c3a9c85b8398c35a960587fbd9fa3a0915406728"
+  }
 }
