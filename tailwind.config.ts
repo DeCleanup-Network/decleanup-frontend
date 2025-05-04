@@ -5,12 +5,20 @@ export default {
   darkMode: ['class'],
   content: ['./src/**/*.{ts,tsx,md,mdx}'],
   theme: {
+    screens: {
+      xs: '320px',
+      sm: '480px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1440px',
+      '2xl': '2560px',
+    },
     extend: {
-      fontFamily: { 
+      fontFamily: {
         mono: ['var(--font-mono)'],
         nunito: ['Nunito', 'sans-serif'],
-        bebas: [ 'Bebas Neue', 'sans-serif'],
-       },
+        bebas: ['Bebas Neue', 'sans-serif'],
+      },
       colors: {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
