@@ -34,12 +34,12 @@ const ImageUploader = ({
   }
 
   return (
-    <div className='mb-4 ml-7 flex flex-col justify-between md:mb-8 md:w-80'>
-      <div className='mb-1 font-bebas text-4xl font-normal md:text-xl lg:text-xl'>
+    <div className='mb-4 flex flex-col justify-between md:mb-8 md:ml-7 md:w-80'>
+      <div className='mb-1 font-bebas text-xl font-normal md:text-xl lg:text-2xl'>
         {label}
       </div>
       <div
-        className='relative flex h-[150px] cursor-pointer items-center justify-center rounded bg-[#58B12F] md:h-[200px] lg:h-[304px]'
+        className='relative mt-1 flex h-[150px] cursor-pointer items-center justify-center rounded bg-[#58B12F] md:mt-0 md:h-[200px] lg:h-[304px]'
         onClick={image ? undefined : triggerFileInput}
         onDrop={onDrop}
         onDragOver={onDragOver}
