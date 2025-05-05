@@ -1,6 +1,6 @@
 **DeCleanup Rewards** is a decentralized application (dApp) build on steller network and designed to:
 a) **tokenize IRL impact created via global/local cleanup efforts**
-b) **incentivize environmental actions via DeFi mechanics**. 
+b) **incentivize environmental actions via DeFi mechanics**.
 The platform promotes environmental stewardship globally, with plans to activate global/local communities and scale across multiple blockchain ecosystems.
 
 ![Screenshot of the Main Page](https://beige-defiant-spoonbill-537.mypinata.cloud/ipfs/QmWjckBnwWkidWtTQwR17TrQWoo9j3FX5LLwRg8s3n12cN)
@@ -11,13 +11,13 @@ The platform promotes environmental stewardship globally, with plans to activate
 
 **Smart Contract GitHub Repository** - 🔗👉 https://github.com/DeCleanUp-DCU/Smart-Contract
 
-**Smart Contract onchain** [Arbiscan](https://arbiscan.io/address/0xf21389b64e0eb749fd150d0c44742692e19a69c8) 
+**Smart Contract onchain** [Arbiscan](https://arbiscan.io/address/0xf21389b64e0eb749fd150d0c44742692e19a69c8)
 
 ## Uniqueness
 
 **How DeCleanup dApp works**: Participants engage in cleanups, submit proof via photos, and earn dynamic NFTs that evolve based on their contributions. More details in our [Mirror Article](https://mirror.xyz/decleanupnet.eth/ZzncKRu-Q-leEZkQ48Txm-NQRxG_hH3V3wyHaYUKfYI).
 
-**User-Centric Design & Functionality**: The DeCleanup dApp offers a seamless user experience with an intuitive interface, allowing individuals and communities to easily submit proof of cleanups and earn dynamic NFTs, reflecting real-world impact on-chain. The verification system ensures quick approval for rewards, making the process simple and efficient. 
+**User-Centric Design & Functionality**: The DeCleanup dApp offers a seamless user experience with an intuitive interface, allowing individuals and communities to easily submit proof of cleanups and earn dynamic NFTs, reflecting real-world impact on-chain. The verification system ensures quick approval for rewards, making the process simple and efficient.
 More details in our [Guide](https://mirror.xyz/decleanupnet.eth/A5uzOpx9HUgXZEopCKUsbgffw9SajL4Q9eECgrguq-4).
 
 **Gasless Approach**: We chose Arbitrum for its low gas fees, with only the first claim requiring gas payment, while the rest of the experience is gasless. This eliminates barriers to onboarding non-tech-savvy users into Web3, enhancing real-world impact - our key KPI. Gasless transactions make Web3 more accessible to everyday people.
@@ -33,19 +33,22 @@ More details in our [Guide](https://mirror.xyz/decleanupnet.eth/A5uzOpx9HUgXZEop
 ![9 Levels NFTs](https://beige-defiant-spoonbill-537.mypinata.cloud/ipfs/QmZELVjF8H5VvG1BxhunXK4n6LuK17RBuis5yRepEqxARk)
 
 The collection items have common traits that remain consistent with each NFT upgrade:
+
 - **Category**: Cleanup Impact NFT
 - **Type**: Dynamic
 - **Impact**: Environmental
 
 There are dynamic traits, which grow every three cleanups:
+
 - **Rarity**: Common (1-3 cleanups), Rare (4-6 cleanups), Legendary (7-9 cleanups), Unique (10 cleanups)
 - **Level**: Newbie (1-3 cleanups), Pro (4-6 cleanups), Hero (7-9 cleanups), Guardian (10 cleanups)
 
 And dynamic traits which grow with every cleanup done:
+
 - **Impact Value**: 1 (first cleanup) to 10 (last cleanup)
 - **DCU Points**: 10 (first cleanup) to 100 (last cleanup)
 
-While the first two categories of traits determine the general information required for this impact product’s classification on the Impact Marketplace, the last categories are mainly dynamic traits, which will determine the rewards value via Impact Marketplace DeFi utility and will contribute for user’s IRL impact rank. 
+While the first two categories of traits determine the general information required for this impact product’s classification on the Impact Marketplace, the last categories are mainly dynamic traits, which will determine the rewards value via Impact Marketplace DeFi utility and will contribute for user’s IRL impact rank.
 Read more on this topic in the article by EcoSynthesisX on [Mirror](https://mirror.xyz/ecosynthesisx.eth/zOdeuaeFfJUFScZZKu1OGF7cWCiRgUHQSGE-14cf8fo).
 
 ![Example of Traits](https://beige-defiant-spoonbill-537.mypinata.cloud/ipfs/QmfUA1PomqfsXPZod2oo79nrMq17xT1Rxo8EdWxwFFVHxM)

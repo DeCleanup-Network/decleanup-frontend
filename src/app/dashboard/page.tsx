@@ -24,14 +24,12 @@ export default function Page() {
     console.log('Uploaded images:', images)
   }
   return (
-    <div className='h-[calc(100vh-160px)] min-h-[calc(98vh-160px)] md:min-h-[calc(94vh-160px)] bg-[#58B12F] font-bebas font-bold my-4  lg:p-4'>
+    <div className='my-4 h-[calc(100vh-160px)] min-h-[calc(98vh-160px)] bg-[#58B12F] font-bebas font-bold md:min-h-[calc(94vh-160px)] lg:p-4'>
       <div className='flex flex-col items-start justify-between lg:flex-row lg:gap-12'>
-
-
         <div className='mt-4 flex w-full flex-col bg-[#FAFF00] lg:order-first lg:w-1/3 lg:bg-[#58B12F]'>
           {/* 24 WEEKS STREAK*/}
           <div className='flex h-[61px] w-full items-center justify-between py-8'>
-            <div className='mx-3 mt-3 md:mx-auto w-full border-4 border-black'>
+            <div className='mx-3 mt-3 w-full border-4 border-black md:mx-auto'>
               <div className='mx-auto flex w-fit lg:w-full'>
                 <div className='hidden items-center justify-center bg-black p-5 lg:flex'>
                   <svg
@@ -82,7 +80,9 @@ export default function Page() {
           <div className='mt-6 flex flex-col space-y-1 px-4'>
             <div className='flex items-center justify-between border-b border-b-black'>
               <p className='md:text-[24px]'>CLEANUPS DONE</p>
-              <p className='md:text-[24px] text-[#58B12F] md:text-[#FAFF00]'>0</p>
+              <p className='text-[#58B12F] md:text-[24px] md:text-[#FAFF00]'>
+                0
+              </p>
             </div>
             <div className='flex items-center justify-between border-b border-b-black'>
               <p className='md:text-[24px]'>REFERRALS </p>
@@ -166,7 +166,7 @@ export default function Page() {
           </div>
         </div>
 
-        <div className='flex w-full flex-col space-y-2  px-4 lg:w-1/3'>
+        <div className='flex w-full flex-col space-y-2 px-4 lg:w-1/3'>
           <LongButton text='CREATE IMPACT CIRCLE' isNotBlack />
           <LongButton text='JOIN IMPACT CIRCLE' isNotBlack />
           <LongButton text='BECOME VERIFIER' isNotBlack />
@@ -202,7 +202,7 @@ function LongButton({ text, isNotBlack }: LongButtonProps) {
     <button
       className={
         isNotBlack
-          ? `block md:h-[60px] w-full bg-[#1E8428] py-2 text-center text-2xl md:text-3xl text-black opacity-50 md:text-[40px]`
+          ? `block w-full bg-[#1E8428] py-2 text-center text-2xl text-black opacity-50 md:h-[60px] md:text-3xl md:text-[40px]`
           : `block h-[60px] w-full bg-black text-center text-3xl text-[#FAFF00] md:text-[40px]`
       }
     >

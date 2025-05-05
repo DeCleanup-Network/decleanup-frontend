@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { X, Send } from 'lucide-react';
+import { X, Send } from 'lucide-react'
 import { useCleanupContext } from '@/context/ContextApi'
 
 type DecleanupShareModalProps = {

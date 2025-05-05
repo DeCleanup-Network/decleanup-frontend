@@ -35,7 +35,7 @@ const ImageUploader = ({
 
   return (
     <div className='mb-4 flex flex-col justify-between md:mb-8 md:ml-7 md:w-80'>
-      <div className='mb-1 font-bebas font-bold text-xl md:text-xl lg:text-2xl'>
+      <div className='mb-1 font-bebas text-xl font-bold md:text-xl lg:text-2xl'>
         {label}
       </div>
       <div

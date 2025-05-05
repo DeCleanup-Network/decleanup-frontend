@@ -24,6 +24,7 @@ export default function RootLayout({
             <ContextProvider>
                 <Header />
                 <main className='md:overflow-y-none flex-1 bg-[#58B12F] overflow-x-hidden md:overflow-hidden  '>
+
                   {children}
                 </main>
                 <Footer />
