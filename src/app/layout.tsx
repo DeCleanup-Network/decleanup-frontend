@@ -3,7 +3,6 @@ import Footer from '@/components/Footer'
 
 import { ContextProvider } from '@/context/ContextApi'
 import { ThirdwebProvider } from 'thirdweb/react'
-import { SessionProvider } from '@/components/SessionProvider'
 import { Providers } from './provider'
 
 import '@/app/globals.css'
@@ -26,7 +25,7 @@ export default function RootLayout({
             <ContextProvider>
               <Providers>
                 <Header />
-                <main className='md:overflow-y-none flex-1 bg-[#58B12F] xs:overflow-x-hidden xs:overflow-y-scroll md:overflow-y-auto'>
+                <main className='md:overflow-y-none flex-1 bg-[#58B12F] xs:overflow-x-hidden '>
                   {children}
                 </main>
                 <Footer />

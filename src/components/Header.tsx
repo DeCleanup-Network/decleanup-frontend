@@ -9,7 +9,7 @@ const Header: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false)
   return (
     <div className='flex items-center justify-between border-b border-b-black bg-[#58B12F] p-4 font-bebas'>
-      <p className='bg-[#FAFF00] p-2 text-2xl'>DECLEANUP NETWORK</p>
+      <p className='bg-[#FAFF00] font-extrabold font-bebas p-2 md:text-3xl'>DECLEANUP NETWORK</p>
 
       <div className='mr-2 flex items-center justify-end md:hidden'>
         <button
@@ -49,7 +49,7 @@ const Header: React.FC = () => {
           APPLY WITH CLEANUP RESULTS
         </a>
       </div>
-      <p className='hidden text-[36.82px] md:flex'>CLEAN UP, SNAP, EARN</p>
+      <p className='hidden font-semibold text-[36.82px] md:flex'>CLEAN UP, SNAP, EARN</p>
     </div>
   )
 }

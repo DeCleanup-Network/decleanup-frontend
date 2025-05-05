@@ -5,7 +5,7 @@ import StellarIcon from '@/public/stellar.png'
 
 const Footer: React.FC = () => {
   return (
-    <div className='flex flex-col items-center justify-between gap-5 border-t border-black bg-[#58B12F] px-5 py-5 font-sans text-2xl xs:text-sm sm:text-lg sm:font-semibold md:flex-row'>
+    <div className='flex flex-row items-start justify-between gap-2 md:gap-5 border-t border-black bg-[#58B12F] px-5 py-3 font-sans text-2xl xs:text-sm sm:text-lg sm:font-semibold md:flex-row'>
       <p>2025©</p>
       <div className='flex flex-wrap justify-center gap-3 font-normal'>
         <a href='#!' className=''>
