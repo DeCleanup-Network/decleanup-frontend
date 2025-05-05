@@ -1,5 +1,6 @@
-"use client"
+'use client'
 import React, { useState } from 'react'
+import { Menu, X } from 'lucide-react'
 interface HeaderProps {
   connectWallet: () => Promise<void>
 }
@@ -7,8 +8,10 @@ interface HeaderProps {
 const Header: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false)
   return (
-    <div className='bg-[#58B12F] p-4 flex justify-between items-center border-b-black border-b  font-bebas'>
-      <p className="bg-[#FAFF00] text-2xl p-2">DECLEANUP NETWORK</p>
+    <div className='flex items-center justify-between border-b border-b-black bg-[#58B12F] p-4 font-bebas'>
+      <p className='bg-[#FAFF00] p-2 font-bebas font-extrabold md:text-3xl'>
+        DECLEANUP NETWORK
+      </p>
 
       {/* Added back button with new arrow style */}
       <div className='flex items-center'>
@@ -54,9 +57,9 @@ const Header: React.FC = () => {
           </a>
         </div>
       )}
-      <p className="text-[36.82px] hidden md:flex">CLEAN UP, SNAP, EARN</p>
+      <p className='hidden text-[36.82px] md:flex'>CLEAN UP, SNAP, EARN</p>
     </div>
   )
 }
 
-export default Header;
+export default Header

@@ -15,7 +15,7 @@ export const ImpactProductModal: React.FC<ModalProps> = ({
   if (!isOpen) return null
 
   return (
-    <div className='fixed inset-0 z-50 flex bg-black/80 overflow-hidden p-4'>
+    <div className='fixed inset-0 z-50 flex overflow-hidden bg-black/80 p-4'>
       <button
         onClick={onClose}
         className='absolute right-4 top-4 z-10 text-white hover:opacity-80'
@@ -25,7 +25,7 @@ export const ImpactProductModal: React.FC<ModalProps> = ({
       </button>
 
       {/* Main modal content with the 2-column layout */}
-      <div className='h-full w-[30%] bg-[#FAFF00] p-6  rounded-tl-2xl rounded-bl-2xl overflow-hidden'>
+      <div className='h-full w-[30%] overflow-hidden rounded-bl-2xl rounded-tl-2xl bg-[#FAFF00] p-6'>
         <div className='text-black'>
           <div className='space-y-8'>
             <div className='text-2xl'>
@@ -63,9 +63,10 @@ export const ImpactProductModal: React.FC<ModalProps> = ({
         </div>
 
         <div className='mt-16 flex w-full flex-row justify-end'>
-          <button 
-          onClick={onClose}
-          className='flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 py-2 font-medium text-white transition-colors duration-200 hover:bg-blue-700'>
+          <button
+            onClick={onClose}
+            className='flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 py-2 font-medium text-white transition-colors duration-200 hover:bg-blue-700'
+          >
             <svg
               xmlns='http://www.w3.org/2000/svg'
               width='20'

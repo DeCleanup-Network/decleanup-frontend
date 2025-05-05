@@ -72,10 +72,10 @@ export default function Table() {
         {!loading && (
           <>
             {/* Mobile View with Scrolling - Only visible on small screens */}
-            <div className="md:hidden w-full">
-              <div className="max-h-[70vh] overflow-y-auto pb-4">
-                <table className='table-auto border-separate border-spacing-y-3 w-full'>
-                  <thead className='bg-[#ECF9F033] sticky top-0 z-10'>
+            <div className='w-full md:hidden'>
+              <div className='max-h-[70vh] overflow-y-auto pb-4'>
+                <table className='w-full table-auto border-separate border-spacing-y-3'>
+                  <thead className='sticky top-0 z-10 bg-[#ECF9F033]'>
                     <tr className='border-[1px] border-[#ECF9F033] text-black'>
                       <th
                         className='w-[10%] cursor-pointer border-[1px] border-[#ECF9F033] px-1 py-2 text-left text-xs font-normal transition-colors duration-200 hover:bg-[#FAFF00] hover:text-black'
@@ -88,7 +88,9 @@ export default function Table() {
                             : '↓'
                           : ''}
                       </th>
-                      <th className='w-[30%] px-1 py-2 text-center text-xs'>User</th>
+                      <th className='w-[30%] px-1 py-2 text-center text-xs'>
+                        User
+                      </th>
                       <th
                         className='w-[20%] cursor-pointer px-1 py-2 text-center text-xs transition-colors duration-200 hover:bg-[#FAFF00] hover:text-black'
                         onClick={() => handleSort('cleanupsDone')}
@@ -130,7 +132,7 @@ export default function Table() {
                         key={id}
                         className='border-b border-gray-100 bg-[#0000001A] text-xs font-normal'
                       >
-                        <td className='w-[10%] bg-[#ECF9F033] px-1 py-2 text-xs text-black font-bold text-center'>
+                        <td className='w-[10%] bg-[#ECF9F033] px-1 py-2 text-center text-xs font-bold text-black'>
                           {user.rank}
                         </td>
                         <td className='w-[30%] px-1 py-2 text-center text-xs text-[#FAFF00]'>
@@ -139,10 +141,10 @@ export default function Table() {
                         <td className='w-[20%] px-1 py-2 text-center text-xs text-[#FAFF00]'>
                           {user.cleanupsDone}
                         </td>
-                        <td className='w-[20%] px-1 py-2 text-xs font-normal text-[#FAFF00] text-center'>
+                        <td className='w-[20%] px-1 py-2 text-center text-xs font-normal text-[#FAFF00]'>
                           {user.referrals}
                         </td>
-                        <td className='w-[20%] px-1 py-2 text-xs font-normal text-[#FAFF00] text-center'>
+                        <td className='w-[20%] px-1 py-2 text-center text-xs font-normal text-[#FAFF00]'>
                           {user.dcuPoints}
                         </td>
                       </tr>
@@ -153,12 +155,12 @@ export default function Table() {
             </div>
 
             {/* Desktop View - Exactly as in original code */}
-            <div className="hidden md:block w-full">
-              <table className='table-auto border-separate border-spacing-y-3 w-full'>
+            <div className='hidden w-full md:block'>
+              <table className='w-full table-auto border-separate border-spacing-y-3'>
                 <thead className='bg-[#ECF9F033]'>
                   <tr className='border-[1px] border-[#ECF9F033] text-black'>
                     <th
-                      className='w-[10%] cursor-pointer border-[1px] border-[#ECF9F033] px-2 md:px-4 py-2 md:py-4 text-left text-xs md:text-[15px] font-normal transition-colors duration-200 hover:bg-[#FAFF00] hover:text-black'
+                      className='w-[10%] cursor-pointer border-[1px] border-[#ECF9F033] px-2 py-2 text-left text-xs font-normal transition-colors duration-200 hover:bg-[#FAFF00] hover:text-black md:px-4 md:py-4 md:text-[15px]'
                       onClick={() => handleSort('rank')}
                     >
                       #
@@ -168,13 +170,15 @@ export default function Table() {
                           : '↓'
                         : ''}
                     </th>
-                    <th className='w-[30%] px-2 md:px-4 py-2 md:py-4 text-center text-xs md:text-base'>User</th>
+                    <th className='w-[30%] px-2 py-2 text-center text-xs md:px-4 md:py-4 md:text-base'>
+                      User
+                    </th>
                     <th
-                      className='w-[20%] cursor-pointer px-2 md:px-4 py-2 md:py-4 text-center text-xs md:text-base transition-colors duration-200 hover:bg-[#FAFF00] hover:text-black'
+                      className='w-[20%] cursor-pointer px-2 py-2 text-center text-xs transition-colors duration-200 hover:bg-[#FAFF00] hover:text-black md:px-4 md:py-4 md:text-base'
                       onClick={() => handleSort('cleanupsDone')}
                     >
-                      <span className="hidden sm:inline">Cleanups</span>
-                      <span className="sm:hidden">Clean</span>
+                      <span className='hidden sm:inline'>Cleanups</span>
+                      <span className='sm:hidden'>Clean</span>
                       {sortConfig.key === 'cleanupsDone'
                         ? sortConfig.direction === 'asc'
                           ? '↑'
@@ -182,11 +186,11 @@ export default function Table() {
                         : ''}
                     </th>
                     <th
-                      className='w-[20%] cursor-pointer px-2 md:px-4 py-2 md:py-4 text-center text-xs md:text-base transition-colors duration-200 hover:bg-[#FAFF00] hover:text-black'
+                      className='w-[20%] cursor-pointer px-2 py-2 text-center text-xs transition-colors duration-200 hover:bg-[#FAFF00] hover:text-black md:px-4 md:py-4 md:text-base'
                       onClick={() => handleSort('referrals')}
                     >
-                      <span className="hidden sm:inline">Refs</span>
-                      <span className="sm:hidden">Ref</span>
+                      <span className='hidden sm:inline'>Refs</span>
+                      <span className='sm:hidden'>Ref</span>
                       {sortConfig.key === 'referrals'
                         ? sortConfig.direction === 'asc'
                           ? '↑'
@@ -194,11 +198,11 @@ export default function Table() {
                         : ''}
                     </th>
                     <th
-                      className='w-[20%] cursor-pointer px-2 md:px-4 py-2 md:py-4 text-center text-xs md:text-base transition-colors duration-200 hover:bg-[#FAFF00] hover:text-black'
+                      className='w-[20%] cursor-pointer px-2 py-2 text-center text-xs transition-colors duration-200 hover:bg-[#FAFF00] hover:text-black md:px-4 md:py-4 md:text-base'
                       onClick={() => handleSort('dcuPoints')}
                     >
-                      <span className="hidden sm:inline">$DCU</span>
-                      <span className="sm:hidden">$DCU</span>
+                      <span className='hidden sm:inline'>$DCU</span>
+                      <span className='sm:hidden'>$DCU</span>
                       {sortConfig.key === 'dcuPoints'
                         ? sortConfig.direction === 'asc'
                           ? '↑'
@@ -211,21 +215,21 @@ export default function Table() {
                   {paginatedData.map((user, id) => (
                     <tr
                       key={id}
-                      className='border-b border-gray-100 bg-[#0000001A] text-xs md:text-[15px] font-normal'
+                      className='border-b border-gray-100 bg-[#0000001A] text-xs font-normal md:text-[15px]'
                     >
-                      <td className='w-[10%] bg-[#ECF9F033] px-2 md:px-4 py-2 md:py-4 text-xs md:text-base text-black font-bold text-center'>
+                      <td className='w-[10%] bg-[#ECF9F033] px-2 py-2 text-center text-xs font-bold text-black md:px-4 md:py-4 md:text-base'>
                         {user.rank}
                       </td>
-                      <td className='w-[30%] px-2 md:px-4 py-2 md:py-4 text-center text-xs md:text-[1.15rem] text-[#FAFF00]'>
+                      <td className='w-[30%] px-2 py-2 text-center text-xs text-[#FAFF00] md:px-4 md:py-4 md:text-[1.15rem]'>
                         {user.user}
                       </td>
-                      <td className='w-[20%] px-2 md:px-4 py-2 md:py-4 text-center text-xs md:text-[1.1rem] text-[#FAFF00]'>
+                      <td className='w-[20%] px-2 py-2 text-center text-xs text-[#FAFF00] md:px-4 md:py-4 md:text-[1.1rem]'>
                         {user.cleanupsDone}
                       </td>
-                      <td className='w-[20%] px-2 md:px-4 py-2 md:py-4 text-xs md:text-[15px] font-normal text-[#FAFF00] text-center'>
+                      <td className='w-[20%] px-2 py-2 text-center text-xs font-normal text-[#FAFF00] md:px-4 md:py-4 md:text-[15px]'>
                         {user.referrals}
                       </td>
-                      <td className='w-[20%] px-2 md:px-4 py-2 md:py-4 text-xs md:text-[15px] font-normal text-[#FAFF00] text-center'>
+                      <td className='w-[20%] px-2 py-2 text-center text-xs font-normal text-[#FAFF00] md:px-4 md:py-4 md:text-[15px]'>
                         {user.dcuPoints}
                       </td>
                     </tr>
@@ -236,23 +240,25 @@ export default function Table() {
           </>
         )}
       </div>
-      
+
       {/* Pagination Controls - Now only visible on desktop */}
       {!loading && (
-        <div className='hidden md:flex w-full items-center justify-center gap-1 sm:gap-2 md:gap-4 mt-4'>
+        <div className='mt-4 hidden w-full items-center justify-center gap-1 sm:gap-2 md:flex md:gap-4'>
           <button
-            className='rounded-md border-2 border-transparent bg-[#FAFF00] px-2 md:px-4 py-1 md:py-2 text-xs md:text-base text-black transition-all duration-200 hover:border-black hover:bg-green-500 disabled:opacity-50'
+            className='rounded-md border-2 border-transparent bg-[#FAFF00] px-2 py-1 text-xs text-black transition-all duration-200 hover:border-black hover:bg-green-500 disabled:opacity-50 md:px-4 md:py-2 md:text-base'
             onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
             disabled={currentPage === 1}
           >
             Previous
           </button>
-          <span className='text-black text-xs md:text-base'>
+          <span className='text-xs text-black md:text-base'>
             {currentPage}/{totalPages}
           </span>
           <button
-            className='rounded-md border-2 border-transparent bg-[#FAFF00] px-2 md:px-4 py-1 md:py-2 text-xs md:text-base text-black transition-all duration-200 hover:border-black hover:bg-green-500 disabled:opacity-50'
-            onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+            className='rounded-md border-2 border-transparent bg-[#FAFF00] px-2 py-1 text-xs text-black transition-all duration-200 hover:border-black hover:bg-green-500 disabled:opacity-50 md:px-4 md:py-2 md:text-base'
+            onClick={() =>
+              setCurrentPage(prev => Math.min(prev + 1, totalPages))
+            }
             disabled={currentPage === totalPages}
           >
             Next

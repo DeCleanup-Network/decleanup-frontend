@@ -1,6 +1,5 @@
 'use client'
 import IsolationMode from '@/./public/Isolation_Mode.png'
-import DecleanupShareModal from '@/components/DecleanupShareModal'
 import { ImpactProductModal } from '@/components/modals/ImpactProductModal'
 import ImageUploadModal from '@/components/modals/UploadModal'
 import PreviewPage from '@/components/modals/PreviewModal'
@@ -25,12 +24,12 @@ export default function Page() {
     console.log('Uploaded images:', images)
   }
   return (
-    <div className='h-[calc(95vh-160px)] min-h-[calc(98vh-160px)] bg-[#58B12F] font-bebas lg:p-4'>
+    <div className='my-4 h-[calc(100vh-160px)] min-h-[calc(98vh-160px)] bg-[#58B12F] font-bebas font-bold md:min-h-[calc(94vh-160px)] lg:p-4'>
       <div className='flex flex-col items-start justify-between lg:flex-row lg:gap-12'>
-        <div className='flex w-full flex-col bg-[#FAFF00] mt-4 lg:order-first lg:w-1/3 lg:bg-[#58B12F]'>
+        <div className='mt-4 flex w-full flex-col bg-[#FAFF00] lg:order-first lg:w-1/3 lg:bg-[#58B12F]'>
           {/* 24 WEEKS STREAK*/}
           <div className='flex h-[61px] w-full items-center justify-between py-8'>
-            <div className='mx-auto w-full border-4 border-black'>
+            <div className='mx-3 mt-3 w-full border-4 border-black md:mx-auto'>
               <div className='mx-auto flex w-fit lg:w-full'>
                 <div className='hidden items-center justify-center bg-black p-5 lg:flex'>
                   <svg
@@ -52,7 +51,7 @@ export default function Page() {
                 </div>
 
                 {/* mobile svg */}
-                <div className='flex items-center justify-center p-5 lg:hidden'>
+                <div className='flex items-center justify-center p-3 lg:hidden'>
                   <svg
                     width='36'
                     height='36'
@@ -72,7 +71,7 @@ export default function Page() {
                 </div>
 
                 <div className='flex w-full items-center justify-start px-2 lg:bg-[#58B12F]'>
-                  <p className='text-4xl'>24 WEEKS STREAK</p>
+                  <p className='text-2xl md:text-4xl'>24 WEEKS STREAK</p>
                 </div>
               </div>
             </div>
@@ -80,20 +79,22 @@ export default function Page() {
 
           <div className='mt-6 flex flex-col space-y-1 px-4'>
             <div className='flex items-center justify-between border-b border-b-black'>
-              <p className='text-[24px]'>CLEANUPS DONE</p>
-              <p className='text-[24px] text-[#FAFF00]'>0</p>
+              <p className='md:text-[24px]'>CLEANUPS DONE</p>
+              <p className='text-[#58B12F] md:text-[24px] md:text-[#FAFF00]'>
+                0
+              </p>
             </div>
             <div className='flex items-center justify-between border-b border-b-black'>
-              <p className='text-[24px]'>REFERRALS </p>
-              <p className='text-[24px] text-[#FAFF00]'>0</p>
+              <p className='md:text-[24px]'>REFERRALS </p>
+              <p className='text-[24px] text-[#58B12F] md:text-[#FAFF00]'>0</p>
             </div>
             <div className='flex items-center justify-between border-b border-b-black'>
-              <p className='text-[24px]'>STREAK</p>
-              <p className='text-[24px] text-[#FAFF00]'>0</p>
+              <p className='md:text-[24px]'>STREAK</p>
+              <p className='text-[24px] text-[#58B12F] md:text-[#FAFF00]'>0</p>
             </div>
             <div className='flex items-center justify-between border-b border-b-black'>
-              <p className='text-[40px]'>TOTAL $DCU</p>
-              <p className='text-[40px] text-[#FAFF00]'>0</p>
+              <p className='md:text-[40px]'>TOTAL $DCU</p>
+              <p className='text-[40px] text-[#58B12F] md:text-[#FAFF00]'>0</p>
             </div>
           </div>
 
@@ -115,8 +116,8 @@ export default function Page() {
           </div>
         </div>
 
-        <div className='order-first w-full px-4  lg:w-1/3'>
-          <div className='flex  w-full justify-center border-4 border-black bg-[#51A12C] px-8 py-2 md:px-4'>
+        <div className='order-first w-full px-4 lg:w-1/3'>
+          <div className='flex w-full justify-center border-4 border-black bg-[#51A12C] px-8 py-2 md:px-4'>
             <div className='my-2 flex w-[323.5px] flex-col border-4 border-[#FAFF00]'>
               <div className='bg-black'>
                 <div className='flex items-center space-x-1 px-1'>
@@ -201,7 +202,7 @@ function LongButton({ text, isNotBlack }: LongButtonProps) {
     <button
       className={
         isNotBlack
-          ? `block h-[60px] w-full bg-[#1E8428] text-center text-3xl text-black opacity-50 md:text-[40px]`
+          ? `block w-full bg-[#1E8428] py-2 text-center text-2xl text-black opacity-50 md:h-[60px] md:text-3xl md:text-[40px]`
           : `block h-[60px] w-full bg-black text-center text-3xl text-[#FAFF00] md:text-[40px]`
       }
     >

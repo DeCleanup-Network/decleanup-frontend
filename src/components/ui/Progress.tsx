@@ -1,15 +1,14 @@
 interface ProgressProps {
-    value: number;
-  }
-  
-  const Progress: React.FC<ProgressProps> = ({ value }) => (
-    <div className="w-full bg-[#111111] rounded-none h-4">
-      <div
-        className="bg-[#FAFF00] h-4 rounded-none transition-all"
-        style={{ width: `${value}%` }}
-      />
-    </div>
-  );
-  
-  export default Progress;
-  
+  value: number
+}
+
+const Progress: React.FC<ProgressProps> = ({ value }) => (
+  <div className='h-4 w-full rounded-none bg-[#111111]'>
+    <div
+      className='h-4 rounded-none bg-[#FAFF00] transition-all'
+      style={{ width: `${value}%` }}
+    />
+  </div>
+)
+
+export default Progress

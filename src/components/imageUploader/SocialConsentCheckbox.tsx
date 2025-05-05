@@ -6,7 +6,7 @@ const SocialConsentCheckbox = () => {
   const handleCheckboxChange = (e: ChangeEvent<HTMLInputElement>) => {
     setCheckBox(e.target.checked)
   }
-  
+
   return (
     <div className='flex flex-row items-baseline'>
       <input

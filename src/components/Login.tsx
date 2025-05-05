@@ -14,25 +14,62 @@ const Login: React.FC = () => {
     return `${address.slice(0, 4)}...${address.slice(-4)}`
   }
 
-  return (
-    <div className='flex flex-1 flex-col'>
-      {/* Main Content */}
-      <div className='flex h-[calc(95vh-160px)] min-h-[calc(98vh-160px)] flex-col items-center'>
-        {/* Heading */}
-        <div className='flex w-full items-center justify-center'>
-          <h2 className='text-center font-bebas text-[105px] font-normal leading-none md:text-[140px] xl:text-[200px]'>
-            DECLEANUP REWARDS
-          </h2>
-        </div>
+  const lines = ['FIRST DAPP TO SELF-TOKENIZE ENVIRONMENTAL', 'CLEANUP EFFORTS']
+  const linesMd = [
+    'FIRST DAPP TO SELF-TOKENIZE',
+    'ENVIRONMENTAL CLEANUP EFFORTS',
+  ]
+  const linesLg = [
+    'FIRST DAPP TO SELF-TOKENIZE ENVIRONMENTAL',
+    'CLEANUP EFFORTS',
+  ]
 
-        <hr className='my-4 w-full border-t-2 border-black' />
+  return (
+    <div className='flex flex-1 flex-col bg-[#58B12F]'>
+      {/* Main Content */}
+      <div className='flex h-[calc(95vh-160px)] min-h-[calc(100vh-160px)] flex-col items-center md:min-h-[calc(100vh-160px)]'>
+        {/* Heading */}
+        <h2 className='w-full py-3 text-center font-bebas font-extrabold xs:text-[60px] xs:leading-[4rem] sm:text-[120px] md:text-[150px] md:leading-[8rem] lg:text-[170px] lg:leading-[13rem]'>
+          DECLEANUP REWARDS
+        </h2>
+
+        <hr className='mb-4 w-full border-t-2 border-black' />
 
         {/* Subheading and Description */}
-        <div className='flex flex-col items-center px-4 py-2 text-center'>
-          <p className='mb-4 bg-[#FAFF00] p-2 font-bebas text-lg font-normal sm:text-xl md:text-6xl'>
+        <div className='flex flex-col items-center py-2 text-center xs:px-2 sm:px-4'>
+          <p className='mb-4 mt-5 inline-block bg-[#FAFF00] px-3 py-1 font-bebas text-lg font-normal leading-tight xs:hidden sm:text-xl md:text-5xl xl:block'>
             FIRST DAPP TO SELF-TOKENIZE ENVIRONMENTAL CLEANUP EFFORTS
           </p>
-          <p className='mb-6 font-bebas text-xl font-normal sm:text-2xl md:text-6xl'>
+          <div className='mb-3 md:hidden'>
+            <div className='font-bebas leading-none text-black xs:text-xl xs:leading-none sm:text-3xl md:text-[3.1rem] md:leading-snug'>
+              {lines.map((line, index) => (
+                <div
+                  key={index}
+                  className='inline-block bg-[#FAFF00] px-2 py-1'
+                >
+                  {line}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Tablet */}
+          <div className='mb-5 xs:hidden md:block lg:hidden xl:hidden'>
+            <div className='font-bebas text-6xl leading-none text-black'>
+              {linesMd.map((line, index) => (
+                <div
+                  key={index}
+                  className='inline-block bg-[#FAFF00] px-2 py-1'
+                >
+                  {line}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Laptop screen */}
+
+          <p className='mt-3 font-bebas text-xl font-bold sm:text-3xl md:mb-6 md:text-6xl'>
             APPLY WITH YOUR CLEANUP RESULTS TO RECEIVE A DECLEANUP IMPACT
             PRODUCT, PROGRESS THROUGH LEVELS AND EARN POINTS, REDEEMABLE IN THE
             FUTURE
@@ -45,26 +82,36 @@ const Login: React.FC = () => {
         <div className='w-full px-4 py-4'>
           {!isConnected ? (
             <div className='flex h-24 w-full items-center justify-center rounded bg-black py-3 font-bold text-[#FAFF00] transition-all hover:bg-gray-800'>
-                <ConnectButton
-                  client={client}
-                  appMetadata={{
-                    name: 'Example App',
-                    url: 'https://example.com',
-                  }}
-                />
-              
+              {/* <ConnectButton.Custom>
+                {({ account, openAccountModal, openConnectModal, mounted }) => {
+                  const connected = mounted && account
+
+                  return (
+                    <div>
+                      <button
+                        onClick={openConnectModal}
+                        className='flex h-full w-full items-center justify-center'
+                      >
+                        <span className='font-bebas font-medium text-[#FAFF00] xs:text-2xl sm:text-4xl md:text-7xl'>
+                          Connect Wallet
+                        </span>
+                      </button>
+                    </div>
+                  )
+                }}
+              </ConnectButton.Custom> */}
             </div>
           ) : (
             <div className='w-full space-y-4'>
-              <button className='h-24 w-full rounded bg-black py-3 font-bebas font-bold text-[#FAFF00] transition-all hover:bg-gray-800 md:text-4xl'>
-                <Link href={'/dashboard'} className='mt-2 text-7xl'>
+              <button className='w-full rounded bg-black py-3 font-bebas font-bold text-[#FAFF00] transition-all hover:bg-gray-800 md:h-24 md:text-4xl'>
+                <Link href={'/dashboard'} className='mt-2 md:text-7xl'>
                   START CLEANUP
                 </Link>
               </button>
 
-              <div className='flex items-center justify-center rounded bg-black bg-opacity-80 text-white'>
+              {/* <div className='flex items-center justify-center rounded bg-black bg-opacity-80 text-white'>
                 <div className='mr-2 h-3 w-3 rounded-full bg-[#58b12f]'></div>
-              </div>
+              </div> */}
             </div>
           )}
         </div>
