@@ -1,6 +1,5 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-
 import { ContextProvider } from '@/context/ContextApi'
 import { ThirdwebProvider } from 'thirdweb/react'
 import { Providers } from './provider'
@@ -23,13 +22,12 @@ export default function RootLayout({
         <div className='flex h-screen flex-col border-black md:border-8'>
           <ThirdwebProvider>
             <ContextProvider>
-              <Providers>
                 <Header />
-                <main className='md:overflow-y-none flex-1 bg-[#58B12F] xs:overflow-x-hidden'>
+                <main className='md:overflow-y-none flex-1 bg-[#58B12F] overflow-x-hidden md:overflow-hidden  '>
+
                   {children}
                 </main>
                 <Footer />
-              </Providers>
             </ContextProvider>
           </ThirdwebProvider>
         </div>

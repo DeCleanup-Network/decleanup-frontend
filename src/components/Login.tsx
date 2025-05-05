@@ -1,18 +1,14 @@
 'use client'
 import { useState } from 'react'
-import { useAccount } from 'wagmi'
-
 import { ConnectButton } from 'thirdweb/react'
 import { client } from '@/app/client'
+import { useActiveAccount } from 'thirdweb/react';
 import Link from 'next/link'
 
 const Login: React.FC = () => {
-  const { address, isConnected } = useAccount()
   const [isConnecting, setIsConnecting] = useState(false)
+  const account = useActiveAccount();
 
-  const formatAddress = (address: string) => {
-    return `${address.slice(0, 4)}...${address.slice(-4)}`
-  }
 
   const lines = ['FIRST DAPP TO SELF-TOKENIZE ENVIRONMENTAL', 'CLEANUP EFFORTS']
   const linesMd = [
@@ -78,43 +74,26 @@ const Login: React.FC = () => {
 
         <hr className='my-6 w-full border-t-2 border-black' />
 
-        {/* Connect Wallet Button or Dashboard Entry */}
+       
         <div className='w-full px-4 py-4'>
-          {!isConnected ? (
-            <div className='flex h-24 w-full items-center justify-center rounded bg-black py-3 font-bold text-[#FAFF00] transition-all hover:bg-gray-800'>
-              {/* <ConnectButton.Custom>
-                {({ account, openAccountModal, openConnectModal, mounted }) => {
-                  const connected = mounted && account
-
-                  return (
-                    <div>
-                      <button
-                        onClick={openConnectModal}
-                        className='flex h-full w-full items-center justify-center'
-                      >
-                        <span className='font-bebas font-medium text-[#FAFF00] xs:text-2xl sm:text-4xl md:text-7xl'>
-                          Connect Wallet
-                        </span>
-                      </button>
-                    </div>
-                  )
-                }}
-              </ConnectButton.Custom> */}
+        {account?.address ? (
+          <Link href="/dashboard" passHref>
+            <div className='flex h-24 w-full items-center font-bebas text-4xl justify-center rounded bg-black py-3 font-bold text-[#FAFF00] transition-all hover:bg-gray-800 cursor-pointer'>
+              GO TO DASHBOARD
             </div>
-          ) : (
-            <div className='w-full space-y-4'>
-              <button className='w-full rounded bg-black py-3 font-bebas font-bold text-[#FAFF00] transition-all hover:bg-gray-800 md:h-24 md:text-4xl'>
-                <Link href={'/dashboard'} className='mt-2 md:text-7xl'>
-                  START CLEANUP
-                </Link>
-              </button>
-
-              {/* <div className='flex items-center justify-center rounded bg-black bg-opacity-80 text-white'>
-                <div className='mr-2 h-3 w-3 rounded-full bg-[#58b12f]'></div>
-              </div> */}
-            </div>
-          )}
-        </div>
+          </Link>
+        ) : (
+          <div className='flex h-24 w-full items-center justify-center rounded bg-black py-3 font-bold text-[#FAFF00] transition-all hover:bg-gray-800'>
+            <ConnectButton
+              client={client}
+              appMetadata={{
+                name: 'Example App',
+                url: 'https://example.com',
+              }}
+            />
+          </div>
+        )}
+      </div>
       </div>
     </div>
   )
