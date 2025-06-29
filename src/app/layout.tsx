@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang='en' className='h-full'>
       <body className='h-full'>
         <div className='flex h-screen flex-col border-black md:border-8'>
-          <ThirdwebProvider>
+            <Providers>
             <ContextProvider>
                 <Header />
                 <main className='md:overflow-y-none flex-1 bg-[#58B12F] overflow-x-hidden md:overflow-hidden  '>
@@ -29,7 +29,7 @@ export default function RootLayout({
                 </main>
                 <Footer />
             </ContextProvider>
-          </ThirdwebProvider>
+            </Providers>
         </div>
       </body>
     </html>
