@@ -1,24 +1,22 @@
 'use client'
-import { useState } from 'react'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
-import { ContractInfo } from './ContractInfo';
-import { useAccount } from 'wagmi';
+import { ContractInfo } from './ContractInfo'
+import { useAccount } from 'wagmi'
 import Link from 'next/link'
 
 const Login: React.FC = () => {
-  const [isConnecting, setIsConnecting] = useState(false)
-  const { isConnected, } = useAccount();
+  const { isConnected } = useAccount()
   const truncateAddress = (addr?: string) => {
-    if (!addr) return "";
-    return `${addr.slice(0, 6)}...${addr.slice(-4)}`;
-  };
+    if (!addr) return ''
+    return `${addr.slice(0, 6)}...${addr.slice(-4)}`
+  }
 
   const lines = ['FIRST DAPP TO SELF-TOKENIZE ENVIRONMENTAL', 'CLEANUP EFFORTS']
   const linesMd = [
     'FIRST DAPP TO SELF-TOKENIZE',
     'ENVIRONMENTAL CLEANUP EFFORTS',
   ]
-  const linesLg = [
+  const _linesLg = [
     'FIRST DAPP TO SELF-TOKENIZE ENVIRONMENTAL',
     'CLEANUP EFFORTS',
   ]
@@ -77,48 +75,47 @@ const Login: React.FC = () => {
 
         <hr className='my-6 w-full border-t-2 border-black' />
 
-       
-        <div className='w-full px-4 h-36 py-4'>
-        {isConnected ? (
-          <Link href="/dashboard" passHref>
-            <div className='flex h-24 w-full items-center font-bebas text-4xl justify-center rounded bg-black py-3 font-bold text-[#FAFF00] transition-all hover:bg-gray-800 cursor-pointer'>
-              GO TO DASHBOARD
-            </div>
-          </Link>
-        ) : (
-          <div className="bg-black h-full items-center text-white px-8 py-3 flex justify-center rounded-lg hover:bg-emerald-600 transition-all shadow-lg">
-          <ConnectButton.Custom>
-            {({ account, openAccountModal, openConnectModal, mounted }) => {
-              const connected = mounted && account;
+        <div className='h-36 w-full px-4 py-4'>
+          {isConnected ? (
+            <Link href='/dashboard' passHref>
+              <div className='flex h-16 w-full cursor-pointer items-center justify-center rounded bg-black py-2 font-bebas text-lg font-bold text-[#FAFF00] transition-all hover:bg-gray-800 xs:h-20 xs:text-xl sm:h-20 sm:text-2xl md:h-24 md:text-3xl lg:h-28 lg:text-4xl'>
+                GO TO DASHBOARD
+              </div>
+            </Link>
+          ) : (
+            <div className='flex h-full items-center justify-center rounded-lg bg-black px-8 py-3 text-white shadow-lg transition-all hover:bg-emerald-600'>
+              <ConnectButton.Custom>
+                {({ account, openAccountModal, openConnectModal, mounted }) => {
+                  const connected = mounted && account
 
-              return (
-                <div>
-                  {connected ? (
-                    <button
-                      onClick={openAccountModal}
-                      className="flex items-center"
-                    >
-                      <span className="text-white font-medium">
-                        {truncateAddress(account.address)}
-                      </span>
-                    </button>
-                  ) : (
-                    <button
-                      onClick={openConnectModal}
-                      className="flex items-center"
-                    >
-                      <span className="text-white font-medium">
-                        Connect Wallet
-                      </span>
-                    </button>
-                  )}
-                </div>
-              );
-            }}
-          </ConnectButton.Custom>
+                  return (
+                    <div>
+                      {connected ? (
+                        <button
+                          onClick={openAccountModal}
+                          className='flex items-center'
+                        >
+                          <span className='font-medium text-white'>
+                            {truncateAddress(account.address)}
+                          </span>
+                        </button>
+                      ) : (
+                        <button
+                          onClick={openConnectModal}
+                          className='flex items-center'
+                        >
+                          <span className='font-medium text-white'>
+                            Connect Wallet
+                          </span>
+                        </button>
+                      )}
+                    </div>
+                  )
+                }}
+              </ConnectButton.Custom>
+            </div>
+          )}
         </div>
-        )}
-      </div>
       </div>
     </div>
   )
