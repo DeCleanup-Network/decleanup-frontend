@@ -22,7 +22,7 @@ export default function Table() {
   })
   const [loading, setLoading] = useState<boolean>(true)
   const [currentPage, setCurrentPage] = useState<number>(1)
-  const itemsPerPage = 8
+  const itemsPerPage = 10
 
   useEffect(() => {
     setTimeout(() => {

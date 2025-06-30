@@ -1,14 +1,17 @@
 'use client'
 import { useState } from 'react'
-import { ConnectButton } from 'thirdweb/react'
-import { client } from '@/app/client'
-import { useActiveAccount } from 'thirdweb/react';
+import { ConnectButton } from '@rainbow-me/rainbowkit'
+import { ContractInfo } from './ContractInfo';
+import { useAccount } from 'wagmi';
 import Link from 'next/link'
 
 const Login: React.FC = () => {
   const [isConnecting, setIsConnecting] = useState(false)
-  const account = useActiveAccount();
-
+  const { isConnected, } = useAccount();
+  const truncateAddress = (addr?: string) => {
+    if (!addr) return "";
+    return `${addr.slice(0, 6)}...${addr.slice(-4)}`;
+  };
 
   const lines = ['FIRST DAPP TO SELF-TOKENIZE ENVIRONMENTAL', 'CLEANUP EFFORTS']
   const linesMd = [
@@ -19,7 +22,7 @@ const Login: React.FC = () => {
     'FIRST DAPP TO SELF-TOKENIZE ENVIRONMENTAL',
     'CLEANUP EFFORTS',
   ]
-
+  console.log(ContractInfo())
   return (
     <div className='flex flex-1 flex-col bg-[#58B12F]'>
       {/* Main Content */}
@@ -75,23 +78,45 @@ const Login: React.FC = () => {
         <hr className='my-6 w-full border-t-2 border-black' />
 
        
-        <div className='w-full px-4 py-4'>
-        {account?.address ? (
+        <div className='w-full px-4 h-36 py-4'>
+        {isConnected ? (
           <Link href="/dashboard" passHref>
             <div className='flex h-24 w-full items-center font-bebas text-4xl justify-center rounded bg-black py-3 font-bold text-[#FAFF00] transition-all hover:bg-gray-800 cursor-pointer'>
               GO TO DASHBOARD
             </div>
           </Link>
         ) : (
-          <div className='flex h-24 w-full items-center justify-center rounded bg-black py-3 font-bold text-[#FAFF00] transition-all hover:bg-gray-800'>
-            <ConnectButton
-              client={client}
-              appMetadata={{
-                name: 'Example App',
-                url: 'https://example.com',
-              }}
-            />
-          </div>
+          <div className="bg-black h-full items-center text-white px-8 py-3 flex justify-center rounded-lg hover:bg-emerald-600 transition-all shadow-lg">
+          <ConnectButton.Custom>
+            {({ account, openAccountModal, openConnectModal, mounted }) => {
+              const connected = mounted && account;
+
+              return (
+                <div>
+                  {connected ? (
+                    <button
+                      onClick={openAccountModal}
+                      className="flex items-center"
+                    >
+                      <span className="text-white font-medium">
+                        {truncateAddress(account.address)}
+                      </span>
+                    </button>
+                  ) : (
+                    <button
+                      onClick={openConnectModal}
+                      className="flex items-center"
+                    >
+                      <span className="text-white font-medium">
+                        Connect Wallet
+                      </span>
+                    </button>
+                  )}
+                </div>
+              );
+            }}
+          </ConnectButton.Custom>
+        </div>
         )}
       </div>
       </div>
