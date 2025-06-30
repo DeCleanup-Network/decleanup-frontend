@@ -37,7 +37,7 @@ function Page() {
 
           <div className='flex flex-col'>
             <span className='font-bebas text-lg leading-6 tracking-normal text-black md:text-xl'>
-              2. AFTER
+              2. AFTER 
             </span>
             <div className='mt-5 md:mt-8'>
               <Image
