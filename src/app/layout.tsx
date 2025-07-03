@@ -20,16 +20,15 @@ export default function RootLayout({
     <html lang='en' className='h-full'>
       <body className='h-full'>
         <div className='flex h-screen flex-col border-black md:border-8'>
-            <Providers>
+          <Providers>
             <ContextProvider>
-                <Header />
-                <main className='md:overflow-y-none flex-1 bg-[#58B12F] overflow-x-hidden md:overflow-hidden  '>
-
-                  {children}
-                </main>
-                <Footer />
+              <Header />
+              <main className='md:overflow-y-none flex-1 overflow-x-hidden bg-[#58B12F] md:overflow-hidden'>
+                {children}
+              </main>
+              <Footer />
             </ContextProvider>
-            </Providers>
+          </Providers>
         </div>
       </body>
     </html>
