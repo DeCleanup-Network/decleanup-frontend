@@ -1,6 +1,6 @@
 'use client'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
-import { ContractInfo } from './ContractInfo'
+import { ContractInfo } from '@/components/features/ContractInfo'
 import { useAccount } from 'wagmi'
 import Link from 'next/link'
 

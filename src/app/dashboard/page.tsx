@@ -15,7 +15,7 @@ interface LongButtonProps {
 export default function Page() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isUploadModalOpen, setIsUploadModalOpen] = useState(false)
-  const [uploadedImages, setUploadedImages] = useState<File[]>([])
+  const [_uploadedImages, setUploadedImages] = useState<File[]>([])
   const [isShareModal, setIsShareModal] = useState(false)
 
   const handleSubmit = (images: File[]) => {
@@ -157,9 +157,9 @@ export default function Page() {
             </div>
           </div>
           <div className='flex h-full w-full flex-col space-y-2 py-4'>
-            <div onClick={() => setIsModalOpen(true)}>
+            <button onClick={() => setIsModalOpen(true)} className='w-full'>
               <LongButton text='APPLY WITH CLEANUP' />
-            </div>
+            </button>
             <div className='mt-6'>
               <LongButton text='CLAIM NEXT LEVEL' isNotBlack />
             </div>
@@ -176,7 +176,8 @@ export default function Page() {
 
       <ImpactProductModal
         isOpen={isModalOpen}
-        onClose={() => {
+        onClose={() => setIsModalOpen(false)}
+        onUploadClick={() => {
           setIsModalOpen(false)
           setIsUploadModalOpen(true)
         }}
