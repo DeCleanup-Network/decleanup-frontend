@@ -1,4 +1,4 @@
-import { DCUContracts } from '../lib/decleanup-contracts'
+import { DCUContracts } from "@/services"
 
 export function ContractInfo() {
   const contracts = new DCUContracts('ARBITRUM_SEPOLIA')

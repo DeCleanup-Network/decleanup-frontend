@@ -1,45 +1,39 @@
 import { useState } from 'react'
-import { X, Send, Upload, CheckCircle, AlertCircle } from 'lucide-react'
-import ImageUploader from '../imageUploader/ImageUploader'
-import UploadInstructions from '../imageUploader/UploadInstructions'
-import SocialConsentCheckbox from '../imageUploader/SocialConsentCheckbox'
-import { useCleanupContext } from '@/context/ContextApi'
+import { X, Send, Camera, Upload, CheckCircle, ArrowRight, AlertCircle } from 'lucide-react'
 
-interface ImageUploadModalProps {
-  isOpen: boolean
-  onClose: () => void
-  onSubmit: (ipfsUri: string) => void
-  userAddress?: string
-}
+// Import components (you'll need to make sure these exist or create them)
+// import ImageUploader from '../imageUploader/ImageUploader'
+// import UploadInstructions from '../imageUploader/UploadInstructions'
+// import SocialConsentCheckbox from '../imageUploader/SocialConsentCheckbox'
+// import { useCleanupContext } from '@/context/ContextApi'
 
-interface UploadStatus {
-  status: 'idle' | 'uploading' | 'success' | 'error'
-  message: string
-  progress: number
-}
-
-const ImageUploadModal = ({
-  isOpen,
-  onClose,
-  onSubmit,
-  userAddress = '',
-}: ImageUploadModalProps) => {
-  const [beforeImage, setBeforeImage] = useState<File | null>(null)
-  const [afterImage, setAfterImage] = useState<File | null>(null)
+// If you don't have these components, we'll create inline versions
+const ImageUploadModal = ({ 
+  isOpen, 
+  onClose, 
+  onSubmit, 
+  userAddress = '' 
+}) => {
+  const [beforeImage, setBeforeImage] = useState(null)
+  const [afterImage, setAfterImage] = useState(null)
   const [cleanupDate, setCleanupDate] = useState('')
   const [cleanupTime, setCleanupTime] = useState('')
   const [step, setStep] = useState(1)
-  const [uploadStatus, setUploadStatus] = useState<UploadStatus>({
+  const [checkBox, setCheckBox] = useState(false)
+  const [isDragging, setIsDragging] = useState(false)
+  const [uploadStatus, setUploadStatus] = useState({
     status: 'idle',
     message: '',
     progress: 0
   })
-  const { checkBox, setCheckBox, setCleanupPicture } = useCleanupContext()
+
+  // If you have the context, uncomment this:
+  // const { checkBox, setCheckBox, setCleanupPicture } = useCleanupContext()
 
   if (!isOpen) return null
 
   // Validate image file types
-  const validateImageFile = (file: File): boolean => {
+  const validateImageFile = (file) => {
     const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp']
     const maxSize = 10 * 1024 * 1024 // 10MB
     
@@ -65,7 +59,7 @@ const ImageUploadModal = ({
   }
 
   // Test Pinata connection
-  const testPinataConnection = async (): Promise<boolean> => {
+  const testPinataConnection = async () => {
     const PINATA_API_KEY = process.env.NEXT_PUBLIC_PINATA_API_KEY
     const PINATA_SECRET_KEY = process.env.NEXT_PUBLIC_PINATA_SECRET_KEY
     
@@ -93,7 +87,7 @@ const ImageUploadModal = ({
   }
 
   // Upload single file to Pinata
-  const uploadSingleFile = async (file: File, filename: string): Promise<string> => {
+  const uploadSingleFile = async (file, filename) => {
     const PINATA_API_KEY = process.env.NEXT_PUBLIC_PINATA_API_KEY
     const PINATA_SECRET_KEY = process.env.NEXT_PUBLIC_PINATA_SECRET_KEY
     
@@ -136,7 +130,7 @@ const ImageUploadModal = ({
   }
 
   // Create and upload metadata JSON
-  const uploadMetadata = async (metadata: any): Promise<string> => {
+  const uploadMetadata = async (metadata) => {
     const PINATA_API_KEY = process.env.NEXT_PUBLIC_PINATA_API_KEY
     const PINATA_SECRET_KEY = process.env.NEXT_PUBLIC_PINATA_SECRET_KEY
     
@@ -182,8 +176,43 @@ const ImageUploadModal = ({
     return result.IpfsHash
   }
 
-  const handleDragOver = (e: React.DragEvent) => {
+  const handleDragOver = (e) => {
     e.preventDefault()
+    setIsDragging(true)
+  }
+
+  const handleDragLeave = (e) => {
+    e.preventDefault()
+    setIsDragging(false)
+  }
+
+  const handleDrop = (e, type) => {
+    e.preventDefault()
+    setIsDragging(false)
+    
+    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+      const file = e.dataTransfer.files[0]
+      if (validateImageFile(file)) {
+        if (type === 'before') {
+          setBeforeImage(file)
+        } else {
+          setAfterImage(file)
+        }
+      }
+    }
+  }
+
+  const handleFileSelect = (e, type) => {
+    if (e.target.files && e.target.files.length > 0) {
+      const file = e.target.files[0]
+      if (validateImageFile(file)) {
+        if (type === 'before') {
+          setBeforeImage(file)
+        } else {
+          setAfterImage(file)
+        }
+      }
+    }
   }
 
   const handleSubmit = async () => {
@@ -212,11 +241,6 @@ const ImageUploadModal = ({
         message: 'Please provide the cleanup date and time',
         progress: 0
       })
-      return
-    }
-
-    // Validate image files
-    if (!validateImageFile(beforeImage) || !validateImageFile(afterImage)) {
       return
     }
 
@@ -300,12 +324,6 @@ const ImageUploadModal = ({
         progress: 100
       })
 
-      // Store images in context
-      setCleanupPicture({
-        before: beforeImage,
-        after: afterImage,
-      })
-
       // Submit the metadata IPFS URI (which contains links to both images)
       onSubmit(`ipfs://${metadataHash}`)
 
@@ -330,174 +348,173 @@ const ImageUploadModal = ({
     setAfterImage(null)
     setCleanupDate('')
     setCleanupTime('')
+    setCheckBox(false)
     setUploadStatus({ status: 'idle', message: '', progress: 0 })
     onClose()
   }
 
+  const ImageUploader = ({ image, onImageChange, label, type, stepNumber }) => (
+    <div className="w-full max-w-sm mx-auto">
+      <div className="mb-4">
+        <div className="flex items-center gap-2 mb-2">
+          <div className="w-6 h-6 bg-black text-white rounded-full flex items-center justify-center text-sm font-bold">
+            {stepNumber}
+          </div>
+          <h3 className="font-semibold text-gray-900">{stepNumber === 1 ? 'Before' : 'After'}</h3>
+        </div>
+        <p className="text-sm text-gray-600 leading-relaxed">{label}</p>
+      </div>
+
+      <div
+        className={`relative border-2 border-dashed rounded-xl p-6 transition-all duration-300 ${
+          isDragging 
+            ? 'border-black bg-[#FAFF00] bg-opacity-20' 
+            : image 
+            ? 'border-black bg-[#FAFF00] bg-opacity-10' 
+            : 'border-gray-300 hover:border-gray-400 bg-gray-50'
+        }`}
+        onDragOver={handleDragOver}
+        onDragLeave={handleDragLeave}
+        onDrop={(e) => handleDrop(e, type)}
+      >
+        {image ? (
+          <div className="text-center">
+            <div className="relative mx-auto mb-4 w-32 h-32 rounded-lg overflow-hidden">
+              <img
+                src={URL.createObjectURL(image)}
+                alt={`${type} preview`}
+                className="w-full h-full object-cover"
+              />
+              <button
+                onClick={() => onImageChange(null)}
+                className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition-colors"
+              >
+                <X size={12} />
+              </button>
+            </div>
+            <div className="flex items-center justify-center gap-2 text-black">
+              <CheckCircle size={16} />
+              <span className="text-sm font-medium">Image uploaded</span>
+            </div>
+            <p className="text-xs text-gray-500 mt-1">{image.name}</p>
+          </div>
+        ) : (
+          <div className="text-center">
+            <div className="mx-auto mb-4 w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center">
+              <Camera size={24} className="text-gray-400" />
+            </div>
+            <p className="text-gray-600 mb-2">
+              <strong>Click to upload</strong> or drag and drop
+            </p>
+            <p className="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
+          </div>
+        )}
+        
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => handleFileSelect(e, type)}
+          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+        />
+      </div>
+    </div>
+  )
+
+  const ProgressBar = () => (
+    <div className="flex items-center justify-center mb-6">
+      <div className="flex items-center">
+        <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
+          step >= 1 ? 'bg-black text-[#FAFF00]' : 'bg-gray-200 text-gray-600'
+        }`}>
+          {beforeImage ? <CheckCircle size={16} /> : '1'}
+        </div>
+        <div className={`w-16 h-1 mx-2 ${step >= 2 ? 'bg-black' : 'bg-gray-200'}`} />
+        <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
+          step >= 2 ? 'bg-black text-[#FAFF00]' : 'bg-gray-200 text-gray-600'
+        }`}>
+          {afterImage ? <CheckCircle size={16} /> : '2'}
+        </div>
+        <div className={`w-16 h-1 mx-2 ${beforeImage && afterImage && checkBox ? 'bg-black' : 'bg-gray-200'}`} />
+        <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
+          beforeImage && afterImage && checkBox ? 'bg-black text-[#FAFF00]' : 'bg-gray-200 text-gray-600'
+        }`}>
+          <Send size={16} />
+        </div>
+      </div>
+    </div>
+  )
+
   const isFormValid = beforeImage && afterImage && cleanupDate && cleanupTime && checkBox
 
   return (
-    <div className='fixed inset-0 z-50 flex items-end bg-black bg-opacity-80'>
-      <div className='w-full overflow-hidden rounded-lg md:relative md:h-[45rem]'>
-        {/* Close button */}
-        <button
-          onClick={handleClose}
-          className='absolute right-2 top-2 mr-3 rounded-full p-1 text-white hover:bg-gray-700 z-10'
-          disabled={uploadStatus.status === 'uploading'}
-        >
-          <X size={44} />
-        </button>
-
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm">
+      <div className="relative w-full max-w-6xl mx-4 bg-white rounded-2xl shadow-2xl overflow-hidden">
         {/* Header */}
-        <div className='ml-2 hidden px-4 py-3 md:flex'>
-          <h2 className='text-xl font-bold text-white'>Upload Cleanup Images</h2>
+        <div className="bg-black px-6 py-4">
+          <div className="flex items-center justify-between">
+            <h2 className="text-2xl font-bold text-[#FAFF00]">Share Your Cleanup Impact</h2>
+            <button
+              onClick={handleClose}
+              className="text-[#FAFF00] hover:bg-[#FAFF00] hover:bg-opacity-20 rounded-full p-2 transition-colors"
+              disabled={uploadStatus.status === 'uploading'}
+            >
+              <X size={24} />
+            </button>
+          </div>
         </div>
 
         {/* Content */}
-        <div className='h-full p-2 md:p-4'>
-          <div className='h-full rounded bg-[#FAFF00] p-2 md:p-4'>
-            <div className='flex h-full flex-col p-2 md:flex-row md:justify-between md:p-5'>
-              {/* Image uploaders */}
-              <div className='mb-4 hidden w-full md:mb-0 md:flex md:w-[65%] md:flex-row'>
-                <ImageUploader
-                  image={beforeImage}
-                  onImageChange={(file) => {
-                    if (file && validateImageFile(file)) {
-                      setBeforeImage(file)
-                      setCleanupPicture(prev => ({ ...prev, before: file }))
-                    }
-                  }}
-                  label='1. Snap a photo of the area before you start. Show the impact your cleanup will make!'
-                  onDragOver={handleDragOver}
-                  onDrop={e => {
-                    e.preventDefault()
-                    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-                      const file = e.dataTransfer.files[0]
-                      if (validateImageFile(file)) {
-                        setBeforeImage(file)
-                        setCleanupPicture(prev => ({ ...prev, before: file }))
-                      }
-                    }
-                  }}
-                />
+        <div className="p-6">
+          <ProgressBar />
 
-                <ImageUploader
-                  image={afterImage}
-                  onImageChange={(file) => {
-                    if (file && validateImageFile(file)) {
-                      setAfterImage(file)
-                      setCleanupPicture(prev => ({ ...prev, after: file }))
-                    }
-                  }}
-                  label='2. Capture the transformed space! Upload your after photo to complete your submission and earn rewards.'
-                  onDragOver={handleDragOver}
-                  onDrop={e => {
-                    e.preventDefault()
-                    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-                      const file = e.dataTransfer.files[0]
-                      if (validateImageFile(file)) {
-                        setAfterImage(file)
-                        setCleanupPicture(prev => ({ ...prev, after: file }))
-                      }
-                    }
-                  }}
-                />
-              </div>
+          {/* Desktop view */}
+          <div className="hidden md:block">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+              <ImageUploader
+                image={beforeImage}
+                onImageChange={setBeforeImage}
+                label="Snap a photo of the area before you start. Show the impact your cleanup will make!"
+                type="before"
+                stepNumber={1}
+              />
+              
+              <ImageUploader
+                image={afterImage}
+                onImageChange={setAfterImage}
+                label="Capture the transformed space! Upload your after photo to complete your submission and earn rewards."
+                type="after"
+                stepNumber={2}
+              />
 
-              {/* mobile flow */}
-              <div className='flex w-full flex-col md:hidden'>
-                <div className='mb-2 flex md:hidden'>
-                  <UploadInstructions />
-                </div>
-
-                {step === 1 ? (
-                  <div className={`transition-all duration-500 ease-in-out ${
-                    step === 1 ? 'opacity-100' : 'pointer-events-none absolute opacity-0'
-                  }`}>
-                    <ImageUploader
-                      image={beforeImage}
-                      onImageChange={(file) => {
-                        if (file && validateImageFile(file)) {
-                          setBeforeImage(file)
-                          setCleanupPicture(prev => ({ ...prev, before: file }))
-                        }
-                      }}
-                      label='1. Snap a photo of the area before you start. Show the impact your cleanup will make!'
-                      onDragOver={handleDragOver}
-                      onDrop={e => {
-                        e.preventDefault()
-                        if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-                          const file = e.dataTransfer.files[0]
-                          if (validateImageFile(file)) {
-                            setBeforeImage(file)
-                            setCleanupPicture(prev => ({ ...prev, before: file }))
-                          }
-                        }
-                      }}
-                    />
-                  </div>
-                ) : (
-                  <div className={`transition-all duration-500 ease-in-out ${
-                    step === 2 ? 'opacity-100' : 'pointer-events-none absolute opacity-0'
-                  }`}>
-                    <ImageUploader
-                      image={afterImage}
-                      onImageChange={(file) => {
-                        if (file && validateImageFile(file)) {
-                          setAfterImage(file)
-                          setCleanupPicture(prev => ({ ...prev, after: file }))
-                        }
-                      }}
-                      label='2. Capture the transformed space! Upload your after photo to complete your submission and earn rewards.'
-                      onDragOver={handleDragOver}
-                      onDrop={e => {
-                        e.preventDefault()
-                        if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-                          const file = e.dataTransfer.files[0]
-                          if (validateImageFile(file)) {
-                            setAfterImage(file)
-                            setCleanupPicture(prev => ({ ...prev, after: file }))
-                          }
-                        }
-                      }}
-                    />
-                  </div>
-                )}
-              </div>
-
-              {/* Right sidebar */}
-              <div className='mb-8 flex w-full flex-col justify-between md:w-[33%] lg:w-[25%]'>
-                <div className='hidden md:flex mb-4'>
-                  <UploadInstructions />
-                </div>
-
+              {/* Right sidebar for desktop */}
+              <div className="flex flex-col justify-between">
                 {/* Date and Time Fields */}
-                <div className='mb-4 space-y-3'>
-                  <h3 className='text-lg font-semibold text-black'>Cleanup Details</h3>
+                <div className="mb-6 space-y-4">
+                  <h3 className="text-lg font-semibold text-black">Cleanup Details</h3>
                   
                   <div>
-                    <label className='block text-sm font-medium text-black mb-1'>
+                    <label className="block text-sm font-medium text-black mb-1">
                       Cleanup Date *
                     </label>
                     <input
-                      type='date'
+                      type="date"
                       value={cleanupDate}
                       onChange={(e) => setCleanupDate(e.target.value)}
-                      className='w-full p-2 border border-gray-300 rounded bg-white text-black'
+                      className="w-full p-2 border border-gray-300 rounded bg-white text-black"
                       max={new Date().toISOString().split('T')[0]}
                       required
                     />
                   </div>
                   
                   <div>
-                    <label className='block text-sm font-medium text-black mb-1'>
+                    <label className="block text-sm font-medium text-black mb-1">
                       Cleanup Time *
                     </label>
                     <input
-                      type='time'
+                      type="time"
                       value={cleanupTime}
                       onChange={(e) => setCleanupTime(e.target.value)}
-                      className='w-full p-2 border border-gray-300 rounded bg-white text-black'
+                      className="w-full p-2 border border-gray-300 rounded bg-white text-black"
                       required
                     />
                   </div>
@@ -505,16 +522,16 @@ const ImageUploadModal = ({
 
                 {/* Upload Status */}
                 {uploadStatus.status !== 'idle' && (
-                  <div className='mb-4 p-3 rounded-lg bg-white border-2 border-black'>
-                    <div className='flex items-center space-x-2 mb-2'>
+                  <div className="mb-4 p-3 rounded-lg bg-gray-50 border">
+                    <div className="flex items-center space-x-2 mb-2">
                       {uploadStatus.status === 'uploading' && (
-                        <Upload className='w-5 h-5 text-blue-600 animate-spin' />
+                        <Upload className="w-5 h-5 text-blue-600 animate-spin" />
                       )}
                       {uploadStatus.status === 'success' && (
-                        <CheckCircle className='w-5 h-5 text-green-600' />
+                        <CheckCircle className="w-5 h-5 text-green-600" />
                       )}
                       {uploadStatus.status === 'error' && (
-                        <AlertCircle className='w-5 h-5 text-red-600' />
+                        <AlertCircle className="w-5 h-5 text-red-600" />
                       )}
                       <span className={`text-sm font-medium ${
                         uploadStatus.status === 'success' ? 'text-green-700' :
@@ -526,54 +543,172 @@ const ImageUploadModal = ({
                     </div>
                     
                     {uploadStatus.status === 'uploading' && (
-                      <div className='w-full bg-gray-200 rounded-full h-2'>
+                      <div className="w-full bg-gray-200 rounded-full h-2">
                         <div
-                          className='bg-blue-600 h-2 rounded-full transition-all duration-300'
+                          className="bg-blue-600 h-2 rounded-full transition-all duration-300"
                           style={{ width: `${uploadStatus.progress}%` }}
                         />
                       </div>
                     )}
                   </div>
                 )}
+              </div>
+            </div>
+          </div>
 
-                <div className='mt-4 md:mt-0'>
-                  <SocialConsentCheckbox />
-
-                  <button
-                    className={`my-4 hidden h-10 w-full text-2xl md:block md:h-12 md:text-3xl lg:h-14 lg:text-4xl transition-colors ${
-                      isFormValid && uploadStatus.status !== 'uploading'
-                        ? 'bg-black text-[#FAFF00] hover:bg-gray-800'
-                        : 'bg-gray-400 text-gray-600 cursor-not-allowed'
-                    }`}
-                    onClick={handleSubmit}
-                    disabled={!isFormValid || uploadStatus.status === 'uploading'}
-                  >
-                    {uploadStatus.status === 'uploading' ? 'Uploading...' : 'Submit'}
-                  </button>
-
-                  <button
-                    className={`my-5 block mb-8 h-14 w-full text-2xl md:hidden transition-colors ${
-                      (step === 1 || (step === 2 && isFormValid)) && uploadStatus.status !== 'uploading'
-                        ? 'bg-black text-[#FAFF00] hover:bg-gray-800'
-                        : 'bg-gray-400 text-gray-600 cursor-not-allowed'
-                    }`}
-                    onClick={() => {
-                      if (step === 1) {
-                        setStep(2)
-                      } else {
-                        handleSubmit()
-                      }
-                    }}
-                    disabled={
-                      (step === 1 && !beforeImage) ||
-                      (step === 2 && (!isFormValid || uploadStatus.status === 'uploading'))
-                    }
-                  >
-                    {uploadStatus.status === 'uploading' ? 'Uploading...' :
-                     step === 1 ? 'Save and Next' : 'Submit'}
-                  </button>
+          {/* Mobile view */}
+          <div className="md:hidden mb-6">
+            {step === 1 ? (
+              <div>
+                <ImageUploader
+                  image={beforeImage}
+                  onImageChange={setBeforeImage}
+                  label="Snap a photo of the area before you start. Show the impact your cleanup will make!"
+                  type="before"
+                  stepNumber={1}
+                />
+                
+                {/* Date and Time Fields for mobile */}
+                <div className="mt-6 space-y-4">
+                  <h3 className="text-lg font-semibold text-black">Cleanup Details</h3>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-black mb-1">
+                      Cleanup Date *
+                    </label>
+                    <input
+                      type="date"
+                      value={cleanupDate}
+                      onChange={(e) => setCleanupDate(e.target.value)}
+                      className="w-full p-2 border border-gray-300 rounded bg-white text-black"
+                      max={new Date().toISOString().split('T')[0]}
+                      required
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-black mb-1">
+                      Cleanup Time *
+                    </label>
+                    <input
+                      type="time"
+                      value={cleanupTime}
+                      onChange={(e) => setCleanupTime(e.target.value)}
+                      className="w-full p-2 border border-gray-300 rounded bg-white text-black"
+                      required
+                    />
+                  </div>
                 </div>
               </div>
+            ) : (
+              <ImageUploader
+                image={afterImage}
+                onImageChange={setAfterImage}
+                label="Capture the transformed space! Upload your after photo to complete your submission and earn rewards."
+                type="after"
+                stepNumber={2}
+              />
+            )}
+
+            {/* Upload Status for mobile */}
+            {uploadStatus.status !== 'idle' && (
+              <div className="mt-4 p-3 rounded-lg bg-gray-50 border">
+                <div className="flex items-center space-x-2 mb-2">
+                  {uploadStatus.status === 'uploading' && (
+                    <Upload className="w-5 h-5 text-blue-600 animate-spin" />
+                  )}
+                  {uploadStatus.status === 'success' && (
+                    <CheckCircle className="w-5 h-5 text-green-600" />
+                  )}
+                  {uploadStatus.status === 'error' && (
+                    <AlertCircle className="w-5 h-5 text-red-600" />
+                  )}
+                  <span className={`text-sm font-medium ${
+                    uploadStatus.status === 'success' ? 'text-green-700' :
+                    uploadStatus.status === 'error' ? 'text-red-700' :
+                    'text-blue-700'
+                  }`}>
+                    {uploadStatus.message}
+                  </span>
+                </div>
+                
+                {uploadStatus.status === 'uploading' && (
+                  <div className="w-full bg-gray-200 rounded-full h-2">
+                    <div
+                      className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+                      style={{ width: `${uploadStatus.progress}%` }}
+                    />
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+
+          {/* Social consent */}
+          <div className="bg-gray-50 rounded-lg p-4 mb-6">
+            <label className="flex items-start gap-3 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={checkBox}
+                onChange={(e) => setCheckBox(e.target.checked)}
+                className="mt-1 w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
+              />
+              <div className="text-sm text-gray-700">
+                <strong>Social media consent:</strong> I agree to let this organization share my cleanup photos on social media to inspire others and showcase community impact.
+              </div>
+            </label>
+          </div>
+
+          {/* Action buttons */}
+          <div className="flex gap-3">
+            {/* Desktop buttons */}
+            <div className="hidden md:flex gap-3 w-full">
+              <button
+                onClick={handleClose}
+                className="flex-1 px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+                disabled={uploadStatus.status === 'uploading'}
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleSubmit}
+                disabled={!isFormValid || uploadStatus.status === 'uploading'}
+                className="flex-1 px-6 py-3 bg-black text-[#FAFF00] rounded-lg hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2"
+              >
+                <Send size={18} />
+                {uploadStatus.status === 'uploading' ? 'Uploading...' : 'Submit Cleanup'}
+              </button>
+            </div>
+
+            {/* Mobile buttons */}
+            <div className="md:hidden w-full">
+              {step === 1 ? (
+                <button
+                  onClick={() => setStep(2)}
+                  disabled={!beforeImage || !cleanupDate || !cleanupTime}
+                  className="w-full px-6 py-4 bg-black text-[#FAFF00] rounded-lg hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2"
+                >
+                  Next Step
+                  <ArrowRight size={18} />
+                </button>
+              ) : (
+                <div className="flex gap-3">
+                  <button
+                    onClick={() => setStep(1)}
+                    className="flex-1 px-4 py-4 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+                  >
+                    Back
+                  </button>
+                  <button
+                    onClick={handleSubmit}
+                    disabled={!isFormValid || uploadStatus.status === 'uploading'}
+                    className="flex-1 px-4 py-4 bg-black text-[#FAFF00] rounded-lg hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2"
+                  >
+                    <Send size={18} />
+                    {uploadStatus.status === 'uploading' ? 'Uploading...' : 'Submit'}
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>

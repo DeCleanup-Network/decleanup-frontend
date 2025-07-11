@@ -15,7 +15,7 @@ interface LongButtonProps {
 export default function Page() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isUploadModalOpen, setIsUploadModalOpen] = useState(false)
-  const [uploadedImages, setUploadedImages] = useState<File[]>([])
+  const [_uploadedImages, setUploadedImages] = useState<File[]>([])
   const [isShareModal, setIsShareModal] = useState(false)
 
   const handleSubmit = (images: File[]) => {
@@ -24,7 +24,7 @@ export default function Page() {
     console.log('Uploaded images:', images)
   }
   return (
-    <div className='my-4 h-[calc(100vh-160px)] min-h-[calc(98vh-160px)] bg-[#58B12F] font-bebas font-bold md:min-h-[calc(94vh-160px)] lg:p-4'>
+    <div className='my-4 h-[calc(100vh-190px)] min-h-[calc(98vh-190px)] bg-[#58B12F] font-bebas font-bold md:min-h-[calc(94vh-160px)] lg:p-4'>
       <div className='flex flex-col items-start justify-between lg:flex-row lg:gap-12'>
         <div className='mt-4 flex w-full flex-col bg-[#FAFF00] lg:order-first lg:w-1/3 lg:bg-[#58B12F]'>
           {/* 24 WEEKS STREAK*/}
@@ -157,9 +157,9 @@ export default function Page() {
             </div>
           </div>
           <div className='flex h-full w-full flex-col space-y-2 py-4'>
-            <div onClick={() => setIsModalOpen(true)}>
+            <button onClick={() => setIsModalOpen(true)} className='w-full'>
               <LongButton text='APPLY WITH CLEANUP' />
-            </div>
+            </button>
             <div className='mt-6'>
               <LongButton text='CLAIM NEXT LEVEL' isNotBlack />
             </div>
@@ -176,7 +176,8 @@ export default function Page() {
 
       <ImpactProductModal
         isOpen={isModalOpen}
-        onClose={() => {
+        onClose={() => setIsModalOpen(false)}
+        onUploadClick={() => {
           setIsModalOpen(false)
           setIsUploadModalOpen(true)
         }}
@@ -202,8 +203,8 @@ function LongButton({ text, isNotBlack }: LongButtonProps) {
     <button
       className={
         isNotBlack
-          ? `block w-full bg-[#1E8428] py-2 text-center text-2xl text-black opacity-50 md:h-[60px] md:text-3xl md:text-[40px]`
-          : `block h-[60px] w-full bg-black text-center text-3xl text-[#FAFF00] md:text-[40px]`
+          ? `block w-full bg-[#1E8428] py-2 text-center text-xl  text-black opacity-50 md:h-[60px] md:text-3xl md:text-[40px]`
+          : `block h-[60px] w-full bg-black text-center text-sm text-[#FAFF00] md:text-[40px]`
       }
     >
       {text}

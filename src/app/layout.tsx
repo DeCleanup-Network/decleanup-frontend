@@ -1,10 +1,9 @@
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
+import Header from '@/components/layout/Header'
+import Footer from '@/components/layout/Footer'
 import { ContextProvider } from '@/context/ContextApi'
-import { ThirdwebProvider } from 'thirdweb/react'
 import { Providers } from './provider'
 
-import '@/app/globals.css'
+import '@/styles/globals/globals.css'
 
 export const metadata = {
   title: 'Decentralized Clean Up Network',
