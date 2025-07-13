@@ -7,7 +7,7 @@ import { sepolia, arbitrumSepolia } from 'wagmi/chains'
 
 const queryClient = new QueryClient()
 const config = getDefaultConfig({
-  appName: 'My RainbowKit App',
+  appName: 'DeCleanup Network',
   projectId: 'YOUR_PROJECT_ID',
   chains: [sepolia, arbitrumSepolia],
 })

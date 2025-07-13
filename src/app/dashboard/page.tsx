@@ -6,6 +6,8 @@ import PreviewPage from '@/components/modals/PreviewModal'
 import Link from 'next/link'
 import { useState } from 'react'
 import Image from 'next/image'
+import { useChainId, useSwitchChain } from 'wagmi'
+import { arbitrumSepolia } from 'wagmi/chains'
 
 interface LongButtonProps {
   text: string
@@ -15,16 +17,39 @@ interface LongButtonProps {
 export default function Page() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isUploadModalOpen, setIsUploadModalOpen] = useState(false)
-  const [_uploadedImages, setUploadedImages] = useState<File[]>([])
+  const [uploadedIpfsUri, setUploadedIpfsUri] = useState<string>('')
   const [isShareModal, setIsShareModal] = useState(false)
 
-  const handleSubmit = (images: File[]) => {
-    setUploadedImages(images)
+  const chainId = useChainId()
+  const { switchChain } = useSwitchChain()
+
+  const handleSubmit = (ipfsUri: string) => {
+    setUploadedIpfsUri(ipfsUri)
     setIsShareModal(true)
-    console.log('Uploaded images:', images)
+    console.log('Uploaded IPFS URI:', ipfsUri)
   }
+
+  const handleSwitchToArbitrumSepolia = () => {
+    switchChain({ chainId: arbitrumSepolia.id })
+  }
+
   return (
     <div className='my-4 h-[calc(100vh-190px)] min-h-[calc(98vh-190px)] bg-[#58B12F] font-bebas font-bold md:min-h-[calc(94vh-160px)] lg:p-4'>
+      {/* Network Warning Banner */}
+      {chainId !== 421614 && (
+        <div className='fixed left-0 right-0 top-0 z-50 bg-red-500 p-4 text-center text-white'>
+          <div className='flex items-center justify-center gap-4'>
+            <span>⚠️ Wrong Network! Please switch to Arbitrum Sepolia</span>
+            <button
+              onClick={handleSwitchToArbitrumSepolia}
+              className='rounded bg-white px-4 py-2 font-semibold text-red-500 hover:bg-gray-100'
+            >
+              Switch Network
+            </button>
+          </div>
+        </div>
+      )}
+
       <div className='flex flex-col items-start justify-between lg:flex-row lg:gap-12'>
         <div className='mt-4 flex w-full flex-col bg-[#FAFF00] lg:order-first lg:w-1/3 lg:bg-[#58B12F]'>
           {/* 24 WEEKS STREAK*/}
@@ -157,7 +182,11 @@ export default function Page() {
             </div>
           </div>
           <div className='flex h-full w-full flex-col space-y-2 py-4'>
-            <button onClick={() => setIsModalOpen(true)} className='w-full'>
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className='w-full'
+              disabled={chainId !== 421614}
+            >
               <LongButton text='APPLY WITH CLEANUP' />
             </button>
             <div className='mt-6'>
@@ -193,6 +222,7 @@ export default function Page() {
         onClose={() => {
           setIsShareModal(false)
         }}
+        ipfsUri={uploadedIpfsUri}
       />
     </div>
   )
@@ -203,7 +233,7 @@ function LongButton({ text, isNotBlack }: LongButtonProps) {
     <button
       className={
         isNotBlack
-          ? `block w-full bg-[#1E8428] py-2 text-center text-xl  text-black opacity-50 md:h-[60px] md:text-3xl md:text-[40px]`
+          ? `block w-full bg-[#1E8428] py-2 text-center text-xl text-black opacity-50 md:h-[60px] md:text-3xl md:text-[40px]`
           : `block h-[60px] w-full bg-black text-center text-sm text-[#FAFF00] md:text-[40px]`
       }
     >

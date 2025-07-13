@@ -1,4 +1,4 @@
-import { Login } from '@/components'
+import Login from '@/components/forms/Login'
 
 const Page = () => {
   return (
