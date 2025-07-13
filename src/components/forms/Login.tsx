@@ -1,6 +1,5 @@
 'use client'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
-import { ContractInfo } from '@/components/features/ContractInfo'
 import { useAccount } from 'wagmi'
 import Link from 'next/link'
 
@@ -20,7 +19,7 @@ const Login: React.FC = () => {
     'FIRST DAPP TO SELF-TOKENIZE ENVIRONMENTAL',
     'CLEANUP EFFORTS',
   ]
-  console.log(ContractInfo())
+
   return (
     <div className='flex flex-1 flex-col bg-[#58B12F]'>
       {/* Main Content */}
